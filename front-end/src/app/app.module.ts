@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatBadgeModule} from '@angular/material/badge'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes:Routes=[
   {path:"", component:HomeComponent},
+  {path:"login", component:LoginComponent},
+  {path:"cart", component:CarComponent},
 
 ]
 
@@ -38,7 +41,8 @@ const appRoutes:Routes=[
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

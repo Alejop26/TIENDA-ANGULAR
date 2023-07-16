@@ -1,21 +1,21 @@
 <!--navigation bar-->
 <mat-toolbar color="primary">
     <mat-toolbar-row class="navBarCss">
- 
-        <button class="buttonCss" mat-icon-button aria-label="Inicio" routerLink="/">
-            <mat-icon class="iconsNav">home</mat-icon>
+
+        <button class="buttonNavBarIconsCss" mat-icon-button aria-label="Inicio" routerLink="/">
+            <mat-icon class="navBarIconsCss">home</mat-icon>
         </button>
 
         <div class="icons-container">
-        <button mat-icon-button routerLink="/carrito">
-            <mat-icon>shopping_cart</mat-icon>
-            <span className="item__total">0</span>
-        </button>
 
-        <button mat-icon-button routerLink="/login">
-            <mat-icon>person</mat-icon>
-        </button>
-    </div>
+            <button class="buttonNavBarIconsCss" mat-icon-button [matBadge]="counter" matBadgeColor="warn" routerLink="/carrito" (click)="cartRoute()">
+                <mat-icon class="navBarIconsCss" >shopping_cart</mat-icon>
+            </button>
+
+            <button  mat-icon-button routerLink="/login" (click)="loginRoute()">
+                <mat-icon class="navBarIconsCss">login</mat-icon>
+            </button>
+        </div>
 
     </mat-toolbar-row>
 </mat-toolbar>

@@ -1,17 +1,11 @@
 .navBarCss{
-    height: 100px;
-
-    display: bor;
-    justify-content: space-between;
-    align-items: center;
+    height: 80px;
 }
 
-
-
-.iconsNav{
-    
-    font-size: 50px;
-
+.icons-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .mat-toolbar-row {
@@ -20,6 +14,10 @@
     align-items: center;
   }
 
-  .mat-icon-button mat-icon {
-    font-size: 50px; /* Ajusta el tamaño según tus necesidades */
+.navBarIconsCss{
+ 
   }
+
+.buttonNavBarIconsCss{
+
+}
