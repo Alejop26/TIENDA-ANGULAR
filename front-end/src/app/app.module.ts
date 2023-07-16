@@ -12,6 +12,24 @@ import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 
+
+// Importar el modulo para hacer peticiones HTTP
+import { HttpClientModule } from '@angular/common/http';
+
+// Importacion de rutas
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes:Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'product/:id', component: ProductComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'payment', component: PaymentComponent},
+  {path: 'cart', component: CarComponent},
+  {path: '**', component: HomeComponent} //Ruta no definida
+]
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +44,13 @@ import { PaymentComponent } from './components/payment/payment.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
