@@ -7,6 +7,6 @@
 <!--Esta seccion representa los botones para cambiar la cantidad ingresada-->
 <div class="order">
     <button *ngIf="minAmountHandler()"class="decrease" (click)="decreaseClickHandler()" >-</button>
-    <input type="text"  [(ngModel)]="order"> 
+    <p class="amount">{{order}}</p>
     <button *ngIf= "comparationMaxAmount()"class="increase" (click)="increaseClickHandler()" >+</button>
 </div>

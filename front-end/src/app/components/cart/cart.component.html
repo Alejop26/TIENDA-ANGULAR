@@ -1,6 +1,12 @@
 <h1 class="tituloReserva">aqui hay un carrito</h1>
 <app-products *ngfor="let product of products;let i=index" [product] = "product"  [index]=i ></app-products>
 
+<!--show the array products-->
+ <div *ngFor="let item of products;let i=index">
+   <app-products [product]="products[i]"></app-products>
+  <!-- you can add any other information related to the product, such as quantity, price, etc. -->
+
+
 <h1>aqui va el precio acumulado</h1>
 <button class="payButton" (click)="handlePayment()">pagar</button>
 
