@@ -1,1 +1,21 @@
-<p>nav-bar works!</p>
+<!--navigation bar-->
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Logo de la tienda</span>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button color="primary" aria-label="Inicio" routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+
+      <button mat-icon-button routerLink="/productos">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+
+      <button mat-icon-button routerLink="/login">
+        <mat-icon>person</mat-icon>
+      </button>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
