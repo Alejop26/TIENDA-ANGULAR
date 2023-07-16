@@ -1,17 +1,19 @@
-.Home-main-container{
+.Home-product-card {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background-color: black;
-    color: white;
-    padding: 1%;
-}
-
-.Home-product-card{
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     background-color: black;
     color: white;
     padding: 1%;
-
-}
+    margin-bottom: 10px;
+  }
+  
+  .Home-product-card:hover {
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .Home-card-button {
+    cursor: pointer;
+  }
+  
