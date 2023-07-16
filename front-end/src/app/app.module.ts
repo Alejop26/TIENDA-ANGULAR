@@ -23,6 +23,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     ProductComponent,
     AdminComponent,
     PaymentComponent
+    
   ],
   imports: [
     BrowserModule,

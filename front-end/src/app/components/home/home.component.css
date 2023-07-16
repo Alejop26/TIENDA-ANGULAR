@@ -1,0 +1,17 @@
+.Home-main-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 1%;
+}
+
+.Home-product-card{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    color: white;
+    padding: 1%;
+
+}
