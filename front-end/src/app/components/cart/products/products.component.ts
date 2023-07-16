@@ -1,18 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component,Input, OnInit } from '@angular/core';
+//import product.model.ts
+import { Product } from '../product.model';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  @Input() product: Product;
+  @Input() index: number;
+//make the variables of product be defined by the variables of product.model.ts
 
-  image= "hola";
-  name= "piedra caliza";
-  price = "100";
-  description= "piedra para construccion";
+  image: string;
+  name: string= "piedra caliza";
+  price: number = 100;
+  description: string= "piedra para construccion";
   order:number = 1;
-  maxAmount= 45;
+  maxAmount: number= 45;
+
+  ngOnInit():void{
+    if(this.product){
+      this.image = this.product.image;
+      this.name = this.product.name;
+      this.price = this.product.price;
+      this.description = this.product.description;
+      this.order = this.product.order;
+      this.maxAmount = this.product.maxAmount;
+    }
+  }
 
 comparationMaxAmount():boolean { 
   if (this.order >= this.maxAmount)
@@ -42,7 +57,6 @@ increaseClickHandler()   {
   constructor() {
 }
 
-  ngOnInit() : void{
-  }
+
 
   }
