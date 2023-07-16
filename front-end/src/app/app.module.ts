@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CarComponent } from './components/cart/car.component';
+import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -19,7 +19,7 @@ import { ProductsComponent } from './components/cart/products/products.component
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    CarComponent,
+    CartComponent,
     HomeComponent,
     ProductComponent,
     AdminComponent,
