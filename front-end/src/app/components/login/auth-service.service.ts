@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService{
   private apiUrl = '/api/login'; // Me falta sacar la URL correcta para el backend o consumo de API
 
   constructor(private http: HttpClient) {}
