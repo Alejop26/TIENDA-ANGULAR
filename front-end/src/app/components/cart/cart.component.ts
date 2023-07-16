@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+  pay:number = 100
+    
 
+  handlePayment = () => {alert("Payment done!");}
 }
