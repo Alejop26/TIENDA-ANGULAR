@@ -1,21 +1,21 @@
 <!--navigation bar-->
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>Logo de la tienda</span>
+    <mat-toolbar-row class="navBarCss">
+ 
+        <button class="buttonCss" mat-icon-button aria-label="Inicio" routerLink="/">
+            <mat-icon class="iconsNav">home</mat-icon>
+        </button>
 
-      <span class="spacer"></span>
+        <div class="icons-container">
+        <button mat-icon-button routerLink="/carrito">
+            <mat-icon>shopping_cart</mat-icon>
+            <span className="item__total">0</span>
+        </button>
 
-      <button mat-icon-button color="primary" aria-label="Inicio" routerLink="/">
-        <mat-icon>home</mat-icon>
-      </button>
+        <button mat-icon-button routerLink="/login">
+            <mat-icon>person</mat-icon>
+        </button>
+    </div>
 
-      <button mat-icon-button routerLink="/productos">
-        <mat-icon>shopping_cart</mat-icon>
-      </button>
-
-      <button mat-icon-button routerLink="/login">
-        <mat-icon>person</mat-icon>
-      </button>
-      
     </mat-toolbar-row>
-  </mat-toolbar>
+</mat-toolbar>

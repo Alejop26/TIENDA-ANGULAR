@@ -1,14 +1,25 @@
+.navBarCss{
+    height: 100px;
 
-.mat-icon-button {
-    width: 48px;
-    height: 48px;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+    display: bor;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.iconsNav{
+    
+    font-size: 50px;
+
+}
+
+.mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .mat-icon {
-    font-size: 24px;
-    color: white;
+
+  .mat-icon-button mat-icon {
+    font-size: 50px; /* Ajusta el tamaño según tus necesidades */
   }
