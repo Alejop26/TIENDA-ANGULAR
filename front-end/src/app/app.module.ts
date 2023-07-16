@@ -35,6 +35,7 @@ const appRoutes:Routes=[
     ProductComponent,
     AdminComponent,
     PaymentComponent
+    
   ],
   imports: [
     BrowserModule,
