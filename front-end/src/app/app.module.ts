@@ -13,6 +13,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SuccessComponent } from './components/success/success.component';//take care of this
 import { RouterModule, Routes } from '@angular/router';
+import { PayTestComponent } from './components/pay-test/pay-test.component';
 
 const appRoutes:Routes=[
   {path:"", component:HomeComponent},
@@ -30,7 +31,8 @@ const appRoutes:Routes=[
     ProductComponent,
     AdminComponent,
     PaymentComponent,
-    SuccessComponent
+    SuccessComponent,
+    PayTestComponent
   ],
   imports: [
     BrowserModule,
