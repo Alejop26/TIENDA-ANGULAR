@@ -11,8 +11,13 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { SuccessComponent } from './components/success/success.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SuccessComponent } from './components/success/success.component';//take care of this
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes:Routes=[
+  {path:"", component:HomeComponent},
+
+]
 
 @NgModule({
   declarations: [
@@ -29,8 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
