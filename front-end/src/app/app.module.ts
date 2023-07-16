@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ProductsComponent } from './components/cart/products/products.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     HomeComponent,
     ProductComponent,
     AdminComponent,
-    PaymentComponent
+    PaymentComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
