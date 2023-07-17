@@ -9,21 +9,18 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CarComponent } from './components/cart/car.component';
+import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { SuccessComponent } from './components/success/success.component';//take care of this
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 const appRoutes: Routes = [
@@ -36,6 +33,8 @@ const appRoutes: Routes = [
   { path: 'cart', component: CarComponent },
   { path: '**', component: HomeComponent } //Ruta no definida
 ]
+import { ProductsComponent } from './components/cart/products/products.component';
+
 
 @NgModule({
   declarations: [
@@ -43,28 +42,30 @@ const appRoutes: Routes = [
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    CarComponent,
+    CartComponent,
     HomeComponent,
     ProductComponent,
     AdminComponent,
     PaymentComponent,
     SuccessComponent,
-    PayTestComponent,
-    ProductDetailsComponent
+    PayTestComponent
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatBadgeModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
     MatCardModule,
     MatInputModule,
-    RouterModule.forRoot(appRoutes),
+    MatButtonModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
