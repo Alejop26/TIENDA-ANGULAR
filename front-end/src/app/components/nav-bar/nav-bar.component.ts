@@ -19,7 +19,27 @@ export class NavBarComponent implements OnInit {
     this.cartService.$miCarrito.subscribe((data) => {
       this.counter = this.cartService.obtenerTotalProductos();
     });
+
+    this.handleTitleDisplay();
+    window.addEventListener('resize', this.handleTitleDisplay);
   }
+
+  handleTitleDisplay() {
+    const titleElement = document.getElementById('title');
+    if (titleElement) {
+      if (window.innerWidth <= 600) {
+        titleElement.style.whiteSpace = 'normal';
+      } else {
+        titleElement.style.whiteSpace = 'nowrap';
+      }
+    }
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.handleTitleDisplay);
+  }
+
+
 
   //rutas para navegar entre componentes
   loginRoute() {
