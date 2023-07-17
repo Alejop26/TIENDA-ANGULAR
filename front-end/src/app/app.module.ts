@@ -22,7 +22,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
 import { ProductsComponent } from './components/cart/products/products.component';
-
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     AdminComponent,
     PaymentComponent,
     PayTestComponent,
-    ProductsComponent,
+    ProductsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -63,6 +63,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatExpansionModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
