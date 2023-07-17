@@ -18,10 +18,17 @@
             <button  mat-icon-button routerLink="/login" (click)="loginRoute()">
                 <mat-icon class="navBarIconsCss">account_box</mat-icon>
             </button>
-            <button  mat-icon-button routerLink="/login">
+            <button  mat-icon-button (click)="logOut()">
                 <mat-icon class="navBarIconsCss">logout</mat-icon>
             </button>
         </div>
-
     </mat-toolbar-row>
 </mat-toolbar>
+
+<div class="logOutAlert">
+    <p>Sesion cerrada.</p>
+</div>
+
+<div class="errorLogginOut">
+    <p>Na estas en una sesion...</p>
+  </div>

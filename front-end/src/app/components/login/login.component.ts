@@ -104,23 +104,4 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
-  logOut() {
-    const status = window.localStorage.getItem("loggedIn");
-    if (status == "true") {
-      this.userId = "";
-      setTimeout(() => {
-        this.router.navigate(['/']);
-        window.localStorage.setItem("userInformation", "");
-      }, 1000);
-      window.localStorage.setItem("adminMode", "false");
-    } else {
-      const alert = document.querySelector(".statusAlert2") as HTMLElement;
-      alert.style.display = "flex";
-
-      setTimeout(() => {
-        alert.style.display = "none";
-      }, 3000);
-    }
-  }
 }
