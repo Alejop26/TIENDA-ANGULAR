@@ -1,1 +1,45 @@
-<p>register works!</p>
+<div class="registerContainer">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="submitRegister()" class="registerForm" #loginForm="ngForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" id="usernameInput" name="username" [(ngModel)]="userData.username" required>
+              </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" id="emailInput" name="email" [(ngModel)]="userData.email" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" id="passwordInput" name="password" [(ngModel)]="userData.password" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input matInput placeholder="Full Name" id="fullNameInput" name="fullName" [(ngModel)]="userData.fullName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" id="phoneInput" name="phone" [(ngModel)]="userData.phone" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address" id="addressInput" name="address" [(ngModel)]="userData.address" required>
+          </mat-form-field>
+          
+          <div class="buttonContainer">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Register</button>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="loginLink">
+          Do you already have an account? <a href="/login">Login</a>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
