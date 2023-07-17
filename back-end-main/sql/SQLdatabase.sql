@@ -47,7 +47,7 @@ CREATE TABLE shoppingCart (
     userID INT NOT NULL,
     productID INT NOT NULL,
     quantity INT NOT NULL,
-    cartStatus ENUM('Active', 'Ordered', 'Cancelled') NOT NULL DEFAULT 'Active',
+    cartStatus ENUM('active', 'inactive', 'cancelled') NOT NULL DEFAULT 'active',
     CONSTRAINT `PK_cartID` PRIMARY KEY (cartID),
     CONSTRAINT `FK_userID_shoppingCart` FOREIGN KEY (userID) REFERENCES users(userID),
     CONSTRAINT `FK_productID_shoppingCart` FOREIGN KEY (productID) REFERENCES products(productID)
@@ -55,11 +55,11 @@ CREATE TABLE shoppingCart (
 
 CREATE TABLE orders (
     orderID INT AUTO_INCREMENT,
-    cartID INT NOT NULL,
+    userID INT NOT NULL,
     orderDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    orderStatus ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled') NOT NULL DEFAULT 'Pending',
+    orderStatus ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') NOT NULL DEFAULT 'pending',
     totalPrice FLOAT NOT NULL,
     shippingAddress VARCHAR(150) NOT NULL,
     CONSTRAINT `PK_orderID` PRIMARY KEY (orderID),
-    CONSTRAINT `FK_cartID_orders` FOREIGN KEY (cartID) REFERENCES shoppingCart(cartID)
+    CONSTRAINT `FK_userID_orders` FOREIGN KEY (userID) REFERENCES users(userID)
 );
