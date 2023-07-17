@@ -13,7 +13,11 @@ export class NavBarComponent implements OnInit {
 
   counter = 0;
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService) { 
+    const adminModeStatus = window.localStorage.getItem("adminMode");
+    const loggedInStatus = window.localStorage.getItem("loggedIn");
+    const userInformationStatus = window.localStorage.getItem("userInformation");
+  }
 
   ngOnInit(): void {
     this.cartService.$miCarrito.subscribe((data) => {
@@ -49,6 +53,32 @@ export class NavBarComponent implements OnInit {
   cartRoute() {
     this.router.navigate(['/cart']);
   }
+
+  logOut() {
+    const status = window.localStorage.getItem("loggedIn");
+    if (status == "true") {
+      setTimeout(() => {
+        window.localStorage.setItem("userInformation", "");
+        window.localStorage.setItem("loggedIn", "false");
+      }, 1000);
+      window.localStorage.setItem("adminMode", "false");
+      const alert = document.querySelector(".logOutAlert") as HTMLElement;
+      alert.style.display = "flex";
+
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 1500);
+    } else {
+      const alert = document.querySelector(".errorLogginOut") as HTMLElement;
+      alert.style.display = "flex";
+
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 1500);
+    }
+  }
+
+
 }
 
 

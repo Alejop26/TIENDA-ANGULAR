@@ -28,3 +28,19 @@
         font-size: 20px;
     }
 }
+
+.logOutAlert, .errorLogginOut{
+    position: fixed;
+    top: 100px;
+    right: 0;
+    padding: 5px;
+    background-color: #3F51B5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: 2s;
+    min-width: 20%;
+    height: 5%;
+  }
