@@ -28,7 +28,7 @@
             <p>{{producto?.description}}</p>
         </div>
         <div>
-            <p>Stock</p>
+            <h3>Stock: {{stock}}</h3>
         </div>
         <div class="order">
             <button [disabled]="minAmountHandler()" class="decrease" (click)="decreaseClickHandler()" > - </button>

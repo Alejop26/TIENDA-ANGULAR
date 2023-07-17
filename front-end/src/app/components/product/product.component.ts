@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {ProductsService} from '../../services/products.service'
+import {InventoryService} from '../../services/inventory.service'
 
 @Component({
   selector: 'app-product',
@@ -9,19 +10,22 @@ import {ProductsService} from '../../services/products.service'
 })
 
 export class ProductComponent implements OnInit {
+  stock: number;
   idProducto: number;
   producto: any = {};
   images: string[] = [];
   selectedImage: string;
   orderQuantity: number = 1;
+  inventory: any = {};
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService ) {}
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       console.log(params['id']);
       this.idProducto = parseInt(params['id'])
       this.cargarProducto()
+      this.sacarStock()
     })
   }
 
@@ -32,6 +36,14 @@ export class ProductComponent implements OnInit {
       console.log(this.producto.productImages[0].imageURL)
       this.images = [this.producto.productImages[0].imageURL, this.producto.productImages[1].imageURL, this.producto.productImages[2].imageURL];
       this.selectedImage = this.images[0];
+    })
+  }
+
+  sacarStock(){
+    this.inventoryService.getOne(this.idProducto).subscribe(data => {
+      this.inventory = data;
+      this.stock = this.inventory.stockMax;
+      console.log(this.stock)
     })
   }
 

@@ -41,6 +41,10 @@ flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
     margin-top: 20px;
 }
 
+.productInfo h3{
+    font-weight: bold;
+}
+
 h1 {
     font-size: 24px;
     margin: 0;
