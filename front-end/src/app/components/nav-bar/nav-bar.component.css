@@ -1,0 +1,27 @@
+.navBarCss{
+    height: 80px;
+}
+
+.icons-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+/*
+  .navBarIconsCss{
+ 
+  }
+
+.buttonNavBarIconsCss{
+
+}
+
+*/
