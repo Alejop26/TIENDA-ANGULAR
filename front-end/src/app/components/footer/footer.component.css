@@ -1,5 +1,5 @@
 .footer-text {
-    font-size: 26px;
+    font-size: 14px;
     font-family: Roboto, sans-serif;
     letter-spacing: normal;
     color: white;
@@ -26,6 +26,6 @@
 
 @media screen and (max-width: 600px) {
     .footer-text {
-        font-size: 20px;
+        font-size: 10px;
     }
 }
