@@ -32,9 +32,9 @@ router.get('/', (req, res) => {
 		},
 		images: {
 			allImages: 'GET /api/images',
-			imageByID: 'GET /api/images/:imageID',
+			imageByID: 'GET /api/images/:productID',
 			createImage: 'POST /api/images',
-			deleteImage: 'DELETE /api/images/:imageID',
+			deleteImage: 'DELETE /api/images/:productID',
 		},
 		inventory: {
 			allInventory: 'GET /api/inventory',

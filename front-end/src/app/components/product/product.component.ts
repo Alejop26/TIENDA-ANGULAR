@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   producto: any = {};
   images: string[] = [];
   selectedImage: string;
-  orderQuantity: number = 1;
+  orderQuantity: number = 0;
   inventory: any = {};
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient) {}
@@ -44,8 +44,8 @@ export class ProductComponent implements OnInit {
   sacarStock(){
     this.inventoryService.getOne(this.idProducto).subscribe(data => {
       this.inventory = data;
-      this.stock = this.inventory.stockMax;
-      console.log(this.stock)
+      this.stock = this.inventory.quantity;
+      // console.log(this.stock)
     })
   }
 
@@ -54,18 +54,18 @@ export class ProductComponent implements OnInit {
   }
 
   comparationMaxAmount():boolean {
-    // if (this.orderQuantity >= this.producto.stock)
-    // {
-    //   this.orderQuantity = this.producto.stock;
-    //   return false;
-    // }
+    if (this.orderQuantity >= this.stock)
+    {
+      this.orderQuantity = this.stock;
+      return true;
+    }
     return false;
   };
 
   minAmountHandler():boolean {
-    if(this.orderQuantity <= 1)
+    if(this.orderQuantity <= 0)
     {
-      this.orderQuantity = 1;
+      this.orderQuantity = 0;
       return true;
     }
     return false;
