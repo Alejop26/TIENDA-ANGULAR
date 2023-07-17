@@ -40,7 +40,7 @@ export class RegisterComponent {
 
   submitRegister() {
     const loggedIn = window.localStorage.getItem("loggedIn");
-    if (loggedIn == "true") {
+    if (loggedIn == "true"){
         const alert = document.querySelector(".statusAlert") as HTMLElement;
         alert.style.display= "flex";
         setTimeout(() => {

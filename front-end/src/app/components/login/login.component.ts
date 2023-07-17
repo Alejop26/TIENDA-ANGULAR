@@ -48,29 +48,21 @@ export class LoginComponent implements OnInit {
       password: password
     };
 
+
     if (username == "adminMode" && password =="12345") {
       
-      window.localStorage.setItem("adminMode", "true");
-      this.loggedIn = true;
-      window.localStorage.setItem("loggeddIn", "true");
-      this.adminMode = true;
-      
-      this.userId = ""; // Reiniciar el valor de userId.
+      this.adminMode = false;
+      window.localStorage.setItem("adminStatus", "true");
+      window.localStorage.setItem("loggedIn", "true");
+
     } else {
     
       const status = window.localStorage.getItem("loggedIn");
     
       if (status == "false") {
-        this.http.get(`${this.apiUrl}/api/users/username/${username}`).subscribe(response => {
-          console.log(response); // Imprimir la respuesta del servidor
+        this.http.get(`${this.apiUrl}/api/users/username/${username}`).subscribe(response => {            
           this.loggedIn = true;
           window.localStorage.setItem("loggedIn", "true");
-          //this.userId = response.userId; // Obtener el userId de la respuesta y asignarlo a userId
-          let obj = JSON.stringify(response);
-          this.userId = obj;
-          console.log(this.userId)
-          localStorage.setItem('obj', this.userId);
-          
           setTimeout(() => {
             this.router.navigate(['/']);
           }, 2000);
@@ -97,7 +89,7 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.router.navigate(['/']);
       }, 1000);
-      window.localStorage.setItem("adminMode", "false");
+      window.localStorage.setItem("adminStatus", "false");
     }
   }
 }
