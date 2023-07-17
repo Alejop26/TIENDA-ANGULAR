@@ -2,62 +2,66 @@
     display: flex;
     align-items: center; /* Centra verticalmente las imágenes */
   }
+
+.productInfo h1{
+    font-weight: bold;
+}
   
-  .mainContainer {
+.mainContainer {
     margin: 20px; /* Agrega un margen exterior */
-  }
+}
   
-  .selectedImageContainer {
-    margin-right: 20px;
-    flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
-  }
+.selectedImageContainer {
+margin-right: 20px;
+flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
+}
   
-  .selectedImageContainer img {
+.selectedImageContainer img {
     max-width: 500px;
     height: auto; /* Ajusta la altura de la imagen automáticamente */
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-  }
-  
-  .secondaryImages {
+}
+
+.secondaryImages {
     display: flex;
     flex-direction: column;
     gap: 10px; /* Agrega espacio entre las imágenes secundarias */
-  }
-  
-  .secondary-image img {
+}
+
+.secondary-image img {
     width: 100px;
     height: 100px; /* Establece un tamaño fijo para las imágenes secundarias */
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer; /* Cambia el cursor al pasar por encima de las imágenes secundarias */
-  }
-  
-  .productInfo {
+}
+
+.productInfo {
     margin-top: 20px;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 24px;
     margin: 0;
     margin-bottom: 10px;
-  }
-  
-  p {
+}
+
+p {
     margin: 0;
     margin-bottom: 10px;
-  }
+}
 
-  .order input{
+.order input{
     width: 50px;
     text-align: center;
     height: auto;
     padding: 10px;
     border: none;
     cursor: pointer;
-  }
-  
-  button {
+}
+
+button {
     padding: 10px 15px;
     font-size: 16px;
     border: none;
@@ -65,5 +69,6 @@
     background-color: #1461a0;
     color: white;
     cursor: pointer;
-  }
-  
+}
+
+
