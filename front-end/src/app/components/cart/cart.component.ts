@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from './product.model';
 import { HttpClient } from '@angular/common/http';
 
-const API_BASE_URL = 'http://localhost:4200';
+const API_BASE_URL:string = 'http://localhost:4200';
 
 @Component({
   selector: 'app-cart',
@@ -11,15 +11,34 @@ const API_BASE_URL = 'http://localhost:4200';
 })
 export class CartComponent {
   pay:number = 100
-  
-
+  //ayudame a consumir esta api
   // constructor(private http: HttpClient) {}
 
-  // //Obtener los elementos del carrito por ID usario (activos, inactivos, o cancelados)
-  // getCartItemsByUserID(userID: number, status: 'active' | 'paid' | 'cancelled') {
-  //   const url = `${API_BASE_URL}/cart/${userID}/${status}`;
-  //   return this.http.get<any[]>(url);
+  // // Obtener los elementos del carrito por ID de usuario (activos, inactivos o cancelados)
+  // getCartItemsByUserID(userID: string, status: 'active' | 'inactive' | 'cancelled') {
+  // const url = "${API_BASE_URL}/api/cart/user/${userID}/${status}";
+  // return this.http.get<any[]>(url);
   // }
+
+  // // Crear un nuevo elemento en el carrito
+  // createCartItem(cartItemData: any) {
+  //   const url = "${API_BASE_URL}/api/cart";
+  //   return this.http.post(url, cartItemData);
+  // }
+
+  // // Cancelar un elemento en el carrito por su ID
+  // cancelCartItem(cartID: string) {
+  //   const url = "${API_BASE_URL}/api/cart/${cartID}/cancel";
+  //   return this.http.put(url, null);
+  // }
+
+  // // Eliminar un elemento del carrito por su ID
+  // deleteCartItem(cartID: string) {
+  //   const url = "${API_BASE_URL}/api/cart/${cartID}";
+  //   return this.http.delete(url);
+  // }
+  
+  
 
   
     //tell me how to show the products
