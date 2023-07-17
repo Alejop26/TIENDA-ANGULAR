@@ -20,6 +20,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Importar el modulo para hacer peticiones HTTP
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes:Routes = [
   {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ const appRoutes:Routes = [
     MatIconModule,
     MatButtonModule,
     MatBadgeModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
