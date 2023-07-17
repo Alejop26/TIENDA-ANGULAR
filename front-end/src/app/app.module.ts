@@ -19,12 +19,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes:Routes=[
-  {path:"", component:HomeComponent},
-  {path:"login", component:LoginComponent},
-  {path:"register", component:RegisterComponent}
-
-]
 
 @NgModule({
   declarations: [
