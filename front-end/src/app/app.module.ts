@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,9 +14,17 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes:Routes=[
-  {path:"", component:HomeComponent},
+// Importar el modulo para hacer peticiones HTTP
 
+const appRoutes:Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'product/:id', component: ProductComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'payment', component: PaymentComponent},
+  {path: 'cart', component: CarComponent},
+  {path: '**', component: HomeComponent} //Ruta no definida
 ]
 import { ProductsComponent } from './components/cart/products/products.component';
 
@@ -37,9 +45,10 @@ import { ProductsComponent } from './components/cart/products/products.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
