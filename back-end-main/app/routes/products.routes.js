@@ -75,7 +75,7 @@ productRouter.post('/', upload.single('image'), async (req, res) => {
 
 		// Upload the image file to Cloudinary
 		const result = await cloudinary.uploader.upload(tempFilePath, {
-			folder: 'NIKE-STORE/products',
+			folder: 'Angular_Store/products',
 			transformation: [{ width: 800, height: 600, crop: 'fill' }],
 		});
 
@@ -138,7 +138,7 @@ productRouter.put('/:productID', async (req, res) => {
 		if (imageFile) {
 			cloudinary.uploader.upload(
 				imageFile.path,
-				{ folder: 'NIKE-STORE/products' },
+				{ folder: 'Angular_Store/products' },
 				async (error, result) => {
 					if (error) {
 						console.log(error);
