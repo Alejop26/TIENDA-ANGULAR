@@ -1,0 +1,31 @@
+.footer-text {
+    font-size: 26px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: normal;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #3f51b5;
+}
+
+.text-container{
+    padding: 10px;
+}
+
+.footer-text {
+    margin: 8px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-text {
+        font-size: 20px;
+    }
+}
