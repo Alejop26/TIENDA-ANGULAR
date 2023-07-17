@@ -2,49 +2,42 @@
 
     <div class="mainContainer" >
         <div class="imagesContainer">
-            <div class="main-image">
-                <img src="{{producto?.productImages[0].imageURL}}" alt="Main Image">
-            </div>
+            <div class="selectedImageContainer">
+                <img [src]="selectedImage" [alt]="selectedImage">
+            </div>  
             <div class="secondaryImages">
                 <div class="secondary-image">
-                    <img src="{{producto?.productImages[0].imageURL}}" alt="Secondary Image">
+                    <img src="{{images[0]}}" alt="Secondary Image" (click)="changeImage(images[0])">
                 </div>
                 <div class="secondary-image">
-                    <img src="{{producto?.productImages[1].imageURL}}" alt="Secondary Image">
+                    <img src="{{images[1]}}" alt="Secondary Image" (click)="changeImage(images[1])">
                 </div>
                 <div class="secondary-image">
-                    <img src="{{producto?.productImages[2].imageURL}}" alt="Secondary Image">
-                </div>
-        </div>
-
-        <div class="productInfo">
-            <div>
-                <h1>{{producto?.productName}}</h1>
+                    <img src="{{images[2]}}" alt="Secondary Image" (click)="changeImage(images[2])">
             </div>
-            <div>
-                <h2>{{producto?.price | currency}}</h2>
-            </div>
-            <div>
-                <p>{{producto?.description}}</p>
-            </div>
-            <div>
-                <p>Stock</p>
-            </div>
-            <div>
-                <button mat-raised-button color="primary">Agregar al carrito</button>
-            </div>
-
     </div>
 
-
-
-
-
-    <!-- <div class="product-imgs"></div>
-    <div class="product-info">
-        <h2>{{producto?.productName}}</h2>
-        <p><b>Descripción:</b> {{producto?.description}}</p>
-        <p> <b>Precio: </b>{{producto?.price | currency}}</p>
-        <div>Acá va el botón para agregar al carrito</div>
-    </div> -->
+    <div class="productInfo">
+        <div>
+            <h1>{{producto?.productName}}</h1>
+        </div>
+        <div>
+            <h2>{{producto?.price | currency}}</h2>
+        </div>
+        <div>
+            <p>{{producto?.description}}</p>
+        </div>
+        <div>
+            <p>Stock</p>
+        </div>
+        <div class="order">
+            <button [disabled]="minAmountHandler()" class="decrease" (click)="decreaseClickHandler()" > - </button>
+            <input type="text" [(ngModel)]="orderQuantity">
+            <button [disabled]="comparationMaxAmount()" class="increase" (click)="increaseClickHandler()" > + </button>
+        </div>
+        <div>
+            <button style="margin-top: 20px" (click)="addToCart()">Agregar al carrito</button>
+        </div>
+    </div>
+    
 </div>

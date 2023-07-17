@@ -7,15 +7,15 @@
     margin: 20px; /* Agrega un margen exterior */
   }
   
-  .main-image {
+  .selectedImageContainer {
     margin-right: 20px;
-    border: solid 1px black;
     flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
   }
   
-  .main-image img {
+  .selectedImageContainer img {
     max-width: 500px;
     height: auto; /* Ajusta la altura de la imagen automáticamente */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
   }
   
@@ -47,12 +47,22 @@
     margin: 0;
     margin-bottom: 10px;
   }
+
+  .order input{
+    width: 50px;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
   
   button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 16px;
+    border: none;
     border-radius: 5px;
-    background-color: #2196f3;
+    background-color: #1461a0;
     color: white;
     cursor: pointer;
   }
