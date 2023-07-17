@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from './service/api.service';
 import {Router} from '@angular/router';
+import {ProductsService} from '../../services/products.service'
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,7 @@ import {Router} from '@angular/router';
 
 export class HomeComponent {
 
-  constructor(private apiService: ApiService , private router:Router) {}
+  constructor( private router:Router, private productsService: ProductsService) {}
 
   data:any[] = [];
 
@@ -18,7 +19,7 @@ export class HomeComponent {
   }
 
   llenarData(){
-    this.apiService.getData().subscribe(data => {
+    this.productsService.getData().subscribe(data => {
       this.data = data;
       console.log(this.data);
     })
@@ -27,9 +28,6 @@ export class HomeComponent {
   //Funcion encargada de que al ejecutarse con el evento click, redirija a la pagina de producto.
   viewProductPage(id: number){
     this.router.navigate([`/product/${id}`]);
-  }
-
-
-
+  }
 
 }
