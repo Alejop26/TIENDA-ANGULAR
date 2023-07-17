@@ -1,1 +1,9 @@
-<p>product works!</p>
+<div class="product-container">
+    <div class="product-imgs"></div>
+    <div class="product-info">
+        <h2>{{producto?.productName}}</h2>
+        <p><b>Descripción:</b> {{producto?.description}}</p>
+        <p> <b>Precio: </b>{{producto?.price | currency}}</p>
+        <div>Acá va el botón para agregar al carrito</div>
+    </div>
+</div>
