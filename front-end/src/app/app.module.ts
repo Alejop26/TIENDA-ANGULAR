@@ -11,32 +11,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatMenuModule } from '@angular/material/menu';
-
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CarComponent } from './components/cart/car.component';
+import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { SuccessComponent } from './components/success/success.component';//take care of this
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
+import { ProductsComponent } from './components/cart/products/products.component';
 
-// Importar el modulo para hacer peticiones HTTP
 
-const appRoutes:Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'product/:id', component: ProductComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'payment', component: PaymentComponent},
-  {path: 'cart', component: CarComponent},
-  {path: '**', component: HomeComponent} //Ruta no definida
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'product/:id', component: ProductComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'payment', component: PaymentComponent },
+  // { path: 'cart', component: CarComponent },
+  { path: '**', component: HomeComponent } //Ruta no definida
 ]
+
 
 @NgModule({
   declarations: [
@@ -44,16 +42,15 @@ const appRoutes:Routes = [
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    CarComponent,
+    CartComponent,
     HomeComponent,
     ProductComponent,
     AdminComponent,
     PaymentComponent,
-    SuccessComponent,
-    PayTestComponent
+    PayTestComponent,
+    ProductsComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,
@@ -66,7 +63,6 @@ const appRoutes:Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatMenuModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)

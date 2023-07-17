@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "name": "Piedra caliza",
+      "price": 100,
+      "description": "Piedra para construcción",
+      "image": "ruta-de-la-imagen-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Granito",
+      "price": 150,
+      "description": "Piedra decorativa para interiores",
+      "image": "ruta-de-la-imagen-2.jpg"
+    }
+  ]
+  
+
+

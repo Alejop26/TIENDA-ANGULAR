@@ -17,6 +17,12 @@
             <button mat-raised-button color="primary" (click)="submitLogin()" type="submit" [disabled]="!loginForm.form.valid">Login</button>
           </div>
         </form>
+        <div class="buttonContainer">
+          <button mat-raised-button color="primary" (click)="logOut()"  type="submit">log out</button>
+        </div>
+        <div class="buttonContainer">
+          <button mat-raised-button color="primary"  type="submit" *ngIf="adminMode">aaaa</button>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <div class="registerLink">
@@ -25,4 +31,9 @@
       </mat-card-actions>
     </mat-card>
   </div>
+
+  <div class="statusAlert">
+    <p>Ya estas en una sesion...</p>
+  </div>
+
   
