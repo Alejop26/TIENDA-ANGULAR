@@ -21,6 +21,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
+import { ProductsComponent } from './components/cart/products/products.component';
+import { CarouselComponent } from './components/product/carousel/carousel.component';
 
 
 const appRoutes: Routes = [
@@ -30,10 +32,9 @@ const appRoutes: Routes = [
   { path: 'product/:id', component: ProductComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'cart', component: CarComponent },
+  // { path: 'cart', component: CarComponent },
   { path: '**', component: HomeComponent } //Ruta no definida
 ]
-import { ProductsComponent } from './components/cart/products/products.component';
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import { ProductsComponent } from './components/cart/products/products.component
     ProductComponent,
     AdminComponent,
     PaymentComponent,
-    SuccessComponent,
-    PayTestComponent
+    PayTestComponent,
+    ProductsComponent,
+    CarouselComponent
   ],
   imports: [
     AppRoutingModule,

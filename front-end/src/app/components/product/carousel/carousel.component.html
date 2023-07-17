@@ -1,0 +1,10 @@
+<!-- create a carousel to show three images -->
+
+<div class="imageContainer">
+    <img *ngFor="let image of images" [src]="image" [alt]="image" (click)="changeImage(image)">
+  </div>
+  
+  <div class="selectedImageContainer">
+    <img [src]="selectedImage" [alt]="selectedImage">
+</div>  
+ 
