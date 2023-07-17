@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -65,6 +66,7 @@ const appRoutes:Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatMenuModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
