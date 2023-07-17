@@ -1,19 +1,75 @@
+.Home-main-container{
+  /* display: flex;
+  flex-wrap: wrap; */
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  padding: 0 15px;
+}
+
 .Home-product-card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: black;
-    color: white;
-    padding: 1%;
-    margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.800);
+  color: white;
+  padding: 1%;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
+  box-shadow: 1px 2px 30px black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Home-product-card:hover {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.Home-card-image{
+  min-width: 150px;
+  /* width: 10%; */
+  /* max-width: 20%; */
+  height: auto;
+  border-radius: 45%;
+  cursor: pointer;
+  box-shadow: 10px 2px 10px rgba(0, 0, 0, 0.301);
+  overflow: hidden;
+}
+
+.Home-card-image img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.Home-card-info{
+  width:80%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.Home-card-button {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .Home-product-card {
+    flex-direction: column
   }
-  
-  .Home-product-card:hover {
-    background-color: #1a1a1a;
-    color: white;
+
+  .Home-card-image {
+    width: 100%;
+    max-width: 200px;
   }
-  
-  .Home-card-button {
-    cursor: pointer;
+
+  .Home-card-info {
+    width: 90%;
   }
+}
+
+
+
+
   
