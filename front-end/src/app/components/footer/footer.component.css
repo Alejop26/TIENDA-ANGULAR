@@ -1,0 +1,21 @@
+.footer {
+    height: 80px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-text {
+    margin-right: 16px;
+}
+
+.footer-icon-button {
+    color: white;
+}
+
