@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {ProductsService} from '../../services/products.service'
 import {InventoryService} from '../../services/inventory.service'
+import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +20,7 @@ export class ProductComponent implements OnInit {
   orderQuantity: number = 1;
   inventory: any = {};
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService ) {}
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -77,13 +79,47 @@ export class ProductComponent implements OnInit {
       this.orderQuantity++;
   }
 
-  addToCart(): void {
+  addToCart(userID: number): void {
   //   this.productsService.addToCart(this.idProducto, this.orderQuantity).subscribe(data => {
   //     console.log(data);
   //   })
     console.log("ordering ...", this.orderQuantity)
-  }
-}
+    //Necesito un método post que envié el id de producto, id de usuario y orderQuantity
+    //Hago solicitud para agregar producto al carrito del usuario
+    const urladdtocart = `http://localhost:8080/api/cart/`; 
+    const body = {
+      userID: userID,
+      productID: this.idProducto,
+      quantity: this.orderQuantity
+    };
 
+    this.http.post(urladdtocart, body).subscribe(
+      (response) => {
+        console.log('Producto agregado al carrito:', response);
+        // Realiza las acciones necesarias después de agregar el producto al carrito
+      },
+      (error) => {
+        console.error('Error al agregar el producto al carrito:', error);
+        // Maneja el error de acuerdo a tus necesidades
+      }
+    );
+  }
+
+
+
+  getUser() {
+    const user = window.localStorage.getItem("userInformation");
+    if (user != null && user != "") {
+      console.log(user);
+      const userInfo = JSON.parse(user);
+      if (userInfo && userInfo.userID) { // Verifica si userInfo y userInfo.userID existen
+        this.addToCart(userInfo.userID);
+      } 
+      } else {
+        console.log("no user");
+        this.router.navigate(['/login']);// Redirecciona a login
+      }
+    } 
+  }
 
         

@@ -24,17 +24,26 @@ export class LoginComponent implements OnInit {
   adminMode: boolean = false;
   userId: string = "";
 
-  constructor(private authService: AuthService, private http: HttpClient, private router: Router) {}
+  constructor(private authService: AuthService, private http: HttpClient, private router: Router) {
+    const adminModeStatus = window.localStorage.getItem("adminMode");
+    const loggedInStatus = window.localStorage.getItem("loggedIn");
+    const userInformationStatus = window.localStorage.getItem("userInformation");
 
-  onSubmit() {
-    console.log(this.authService.login);
+    if (adminModeStatus === null) {
+      window.localStorage.setItem("adminMode", "false");
+    }
+    
+    if (loggedInStatus === null) {
+      window.localStorage.setItem("loggedIn", "false");
+    }
+
+    if (userInformationStatus === null) {
+      window.localStorage.setItem("userInformation", "");
+    }
   }
 
   ngOnInit(): void {
-    const status = window.localStorage.getItem("loggedIn");
-    this.loggedIn = status === "true";
-    window.localStorage.getItem("adminMode");
-    window.localStorage.getItem("loggedIn");
+    
   }
 
   submitLogin() {
@@ -49,36 +58,45 @@ export class LoginComponent implements OnInit {
     };
 
     if (username == "adminMode" && password =="12345") {
-      
+      window.localStorage.setItem("loggedIn", "true");
       window.localStorage.setItem("adminMode", "true");
-      this.loggedIn = true;
-      window.localStorage.setItem("loggeddIn", "true");
-      this.adminMode = true;
-      
-      this.userId = ""; // Reiniciar el valor de userId.
     } else {
-    
       const status = window.localStorage.getItem("loggedIn");
     
       if (status == "false") {
-        this.http.get(`${this.apiUrl}/api/users/username/${username}`).subscribe(response => {
-          console.log(response); // Imprimir la respuesta del servidor
-          this.loggedIn = true;
-          window.localStorage.setItem("loggedIn", "true");
-          //this.userId = response.userId; // Obtener el userId de la respuesta y asignarlo a userId
-          let obj = JSON.stringify(response);
-          this.userId = obj;
-          console.log(this.userId)
-          localStorage.setItem('obj', this.userId);
-          
+        this.http.get(`${this.apiUrl}/api/users/username/${username}`).subscribe(response => {            
+          if(response != null){
+            const user = response as User;
+            if (user.password === password) {
+              window.localStorage.setItem("loggedIn", "true");
+              window.localStorage.setItem("userInformation", JSON.stringify(response));
+              setTimeout(() => {
+                this.router.navigate(['/'])});
+
+            } else {
+              const alert = document.querySelector(".nullAlert") as HTMLElement;
+              alert.style.display= "flex";
+
+              setTimeout(() => {
+                alert.style.display= "none";
+              }, 3000);
+            }
+          } else {
+            const alert = document.querySelector(".nullAlert") as HTMLElement;
+            alert.style.display= "flex";
+            setTimeout(() => {
+              alert.style.display= "none";
+            }, 3000);
+          }
+          console.log(response);
           setTimeout(() => {
-            this.router.navigate(['/']);
+            //this.router.navigate(['/']);
           }, 2000);
         }, error => {
           console.error(error); // Manejo de errores
         });
       } else {
-        const alert = document.querySelector(".statusAlert") as HTMLElement;
+        const alert = document.querySelector(".statusAlert1") as HTMLElement;
         alert.style.display= "flex";
 
         setTimeout(() => {
@@ -93,11 +111,19 @@ export class LoginComponent implements OnInit {
     if (status == "true") {
       window.localStorage.setItem("loggedIn", "false");
       console.log("Deslogueado");
-      this.userId = ""; // Reiniciar el valor de userId
+      this.userId = "";
       setTimeout(() => {
         this.router.navigate(['/']);
+        window.localStorage.setItem("userInformation", "");
       }, 1000);
       window.localStorage.setItem("adminMode", "false");
+    } else {
+      const alert = document.querySelector(".statusAlert2") as HTMLElement;
+      alert.style.display = "flex";
+
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 3000);
     }
   }
 }
