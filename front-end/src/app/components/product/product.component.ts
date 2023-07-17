@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {ProductsService} from '../../services/products.service'
 import {InventoryService} from '../../services/inventory.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,7 @@ export class ProductComponent implements OnInit {
   orderQuantity: number = 1;
   inventory: any = {};
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService ) {}
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -77,11 +78,39 @@ export class ProductComponent implements OnInit {
       this.orderQuantity++;
   }
 
-  addToCart(): void {
+  addToCart(userID: number): void {
   //   this.productsService.addToCart(this.idProducto, this.orderQuantity).subscribe(data => {
   //     console.log(data);
   //   })
     console.log("ordering ...", this.orderQuantity)
+  }
+
+
+  // getUser(){
+  //   const user = window.localStorage.getItem("userInformation");
+  //   if (user != null){
+  //     console.log(user);
+  //     const userInfo = JSON.parse(user);
+  //     this.addToCart(userInfo.userID);
+  //   } else {
+  //     console.log("no user");
+  //     this.router.navigate([`/login`]);
+  //   }
+    
+  // }
+
+  getUser() {
+    const user = window.localStorage.getItem("userInformation");
+    if (user != null) {
+      console.log(user);
+      const userInfo = JSON.parse(user);
+      if (userInfo && userInfo.userID) { // Verifica si userInfo y userInfo.userID existen
+        this.addToCart(userInfo.userID);
+      } else {
+        console.log("no user");
+      this.router.navigate(['/login']);
+      }
+    } 
   }
 }
 

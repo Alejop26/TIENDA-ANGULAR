@@ -28,6 +28,9 @@ export class LoginComponent{
 
   //Constructor es una a funcion que se va a iniciar automaticamente en el momento que se utilice la clase.
   constructor(private authService: AuthService, private http: HttpClient, private router: Router) {
+    window.localStorage.setItem("adminMode", "false");
+    window.localStorage.setItem("loggedIn", "false");
+    window.localStorage.setItem("userInformation", "null");
     window.localStorage.getItem("adminMode"); //Revisa el estado de la variable adminMode que esta dentro del localStorage.
     window.localStorage.getItem("loggedIn");  //Revisa el estado de la variable loggedIn que esta dentro del localStorage
     window.localStorage.getItem("userInformation"); //Revisa el estado de la variable userInformation que esta dentro del localStorage
