@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
   constructor(private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
-
     this.cartService.$miCarrito.subscribe((data) => {
       this.counter = this.cartService.obtenerTotalProductos();
     });
