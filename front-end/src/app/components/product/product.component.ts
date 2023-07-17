@@ -12,6 +12,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 export class ProductComponent implements OnInit {
   idProducto = 0;
   producto: any = {}
+  images: string[] = [];
+  selectedImage: string;
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService ) {}
 
@@ -27,7 +29,13 @@ export class ProductComponent implements OnInit {
     this.productsService.getOne(this.idProducto).subscribe(data => {
       this.producto = data;
       console.log(data)
+      this.images = [this.producto.productImages[0], this.producto.productImages[1], this.producto.productImages[2]];
+      this.selectedImage = this.images[0];
     })
+  }
+
+  changeImage(imageUrl: string): void {
+    this.selectedImage = imageUrl;
   }
 }
 

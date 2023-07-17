@@ -22,7 +22,6 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
 import { ProductsComponent } from './components/cart/products/products.component';
-import { CarouselComponent } from './components/product/carousel/carousel.component';
 
 
 const appRoutes: Routes = [
@@ -50,7 +49,6 @@ const appRoutes: Routes = [
     PaymentComponent,
     PayTestComponent,
     ProductsComponent,
-    CarouselComponent
   ],
   imports: [
     AppRoutingModule,
