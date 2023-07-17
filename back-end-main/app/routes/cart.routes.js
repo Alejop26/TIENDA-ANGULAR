@@ -3,8 +3,12 @@ import ShoppingCart from '../models/cart.models.js';
 import User from '../models/user.models.js';
 import Product from '../models/product.models.js';
 import Inventory from '../models/inventory.model.js';
+import ProductImage from '../models/productImages.model.js';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
 const cartRouter = express.Router();
+dotenv.config();
 
 // GET
 
@@ -32,7 +36,15 @@ cartRouter.get('/user/:userID', async (req, res) => {
 				if (product.length === 0) {
 					return { ...cartItem.dataValues, product: {} };
 				}
-				return { ...cartItem.dataValues, product };
+				// Obtaining the images of the product
+				const productImages = await ProductImage.findAll({
+					where: { productID: product.productID },
+				});
+				if (productImages.length === 0) {
+					return { ...cartItem.dataValues, product: {} };
+				}
+
+				return { ...cartItem.dataValues, product, productImages };
 			})
 		);
 
@@ -77,7 +89,15 @@ cartRouter.get('/user/:userID/active', async (req, res) => {
 				if (product.length === 0) {
 					return { ...cartItem.dataValues, product: {} };
 				}
-				return { ...cartItem.dataValues, product };
+				// Obtaining the images of the product
+				const productImages = await ProductImage.findAll({
+					where: { productID: product.productID },
+				});
+				if (productImages.length === 0) {
+					return { ...cartItem.dataValues, product: {} };
+				}
+
+				return { ...cartItem.dataValues, product, productImages };
 			})
 		);
 
@@ -198,6 +218,35 @@ cartRouter.post('/', async (req, res) => {
 			return res.status(404).json({ message: 'Inventory not found' });
 		}
 
+		const allUsersAdmin = await User.findAll({
+			where: { role: 'admin' },
+		});
+
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD,
+			},
+		});
+
+		// Verify if the stock is 1, if it is send an email to the admin to restock
+		if (inventory.quantity === 0 || inventory.quantity === 1 || inventory.quantity < inventory.stockMin) {
+			// Send email to admin
+			const mailOptions = {
+				from: process.env.EMAIL_USER,
+				to: allUsersAdmin.map((user) => user.email),
+				subject: 'Restock',
+				text: `The product ${product.productName} is running out of stock, please restock`,
+			};
+
+			transporter.sendMail(mailOptions, (error, info) => {
+				if (error) {
+					console.log(error);
+				}
+			});
+		}
+
 		if (inventory.quantity === 0 || inventory.quantity < quantity) {
 			return res
 				.status(404)
@@ -228,7 +277,7 @@ cartRouter.post('/', async (req, res) => {
 		}
 
 		// Verify if the quantity is less than 1
-		if (quantity < 1) {
+		if (quantity < 0) {
 			return res.status(404).json({
 				message: 'You must add at least one product to the cart',
 			});
@@ -302,6 +351,44 @@ cartRouter.put('/:cartID/activate', async (req, res) => {
 		if (cartItem.cartStatus !== 'cancelled') {
 			return res.status(404).json({
 				message: 'Cart item is not cancelled, cannot be activated',
+			});
+		}
+
+		// If the product is available in the inventory, activate the cart item
+		const inventory = await Inventory.findOne({
+			where: { productID: cartItem.productID },
+		});
+
+		if (inventory.quantity > 0) {
+			await cartItem.update({ cartStatus: 'active' });
+			return res.status(200).json({ message: 'Cart item activated' });
+		}
+
+		res.status(404).json({
+			message: 'Cart item cannot be activated, not enough inventory',
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error activating the cart item' });
+	}
+});
+
+// Activate an inactive cart item by its cartID (base path /api/cart/activate/:cartID)
+cartRouter.put('/:cartID/activate-inactive', async (req, res) => {
+	try {
+		const cartID = req.params.cartID;
+
+		// Verify if the cart item exists
+		const cartItem = await ShoppingCart.findByPk(cartID);
+
+		if (!cartItem) {
+			return res.status(404).json({ message: 'Cart item not found' });
+		}
+
+		// Verify if the cart item has cartStatus cancelled
+		if (cartItem.cartStatus !== 'inactive') {
+			return res.status(404).json({
+				message: 'Cart item is not inactive, cannot be activated',
 			});
 		}
 

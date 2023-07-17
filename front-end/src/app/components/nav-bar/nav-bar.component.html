@@ -1,19 +1,26 @@
 <!--navigation bar-->
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="navBar">
     <mat-toolbar-row class="navBarCss">
 
         <button class="buttonNavBarIconsCss" mat-icon-button aria-label="Inicio" routerLink="/">
-            <mat-icon class="navBarIconsCss">home</mat-icon>
+            <mat-icon class="navBarIconsCss">alarm</mat-icon>
         </button>
+
+        <div class="storeName">
+            <h1>TIMELESS CLASSICS</h1>
+        </div>
+        
 
         <div class="icons-container">
 
             <button class="buttonNavBarIconsCss" mat-icon-button [matBadge]="counter" matBadgeColor="warn" routerLink="/carrito" (click)="cartRoute()">
                 <mat-icon class="navBarIconsCss" >shopping_cart</mat-icon>
             </button>
-
             <button  mat-icon-button routerLink="/login" (click)="loginRoute()">
-                <mat-icon class="navBarIconsCss">login</mat-icon>
+                <mat-icon class="navBarIconsCss">account_box</mat-icon>
+            </button>
+            <button  mat-icon-button routerLink="/login">
+                <mat-icon class="navBarIconsCss">logout</mat-icon>
             </button>
         </div>
 
