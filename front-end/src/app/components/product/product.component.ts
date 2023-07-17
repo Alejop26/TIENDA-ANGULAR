@@ -83,21 +83,11 @@ export class ProductComponent implements OnInit {
   //     console.log(data);
   //   })
     console.log("ordering ...", this.orderQuantity)
+    
+
   }
 
 
-  // getUser(){
-  //   const user = window.localStorage.getItem("userInformation");
-  //   if (user != null){
-  //     console.log(user);
-  //     const userInfo = JSON.parse(user);
-  //     this.addToCart(userInfo.userID);
-  //   } else {
-  //     console.log("no user");
-  //     this.router.navigate([`/login`]);
-  //   }
-    
-  // }
 
   getUser() {
     const user = window.localStorage.getItem("userInformation");
@@ -106,9 +96,9 @@ export class ProductComponent implements OnInit {
       const userInfo = JSON.parse(user);
       if (userInfo && userInfo.userID) { // Verifica si userInfo y userInfo.userID existen
         this.addToCart(userInfo.userID);
-      } else {
+      } else { //Si no hay una sesion iniciada redirige a login
         console.log("no user");
-      this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       }
     } 
   }
