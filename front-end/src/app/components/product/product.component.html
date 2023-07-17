@@ -1,9 +1,50 @@
 <div class="product-container">
-    <div class="product-imgs"></div>
+
+    <div class="mainContainer" >
+        <div class="imagesContainer">
+            <div class="main-image">
+                <img src="{{producto?.productImages[0].imageURL}}" alt="Main Image">
+            </div>
+            <div class="secondaryImages">
+                <div class="secondary-image">
+                    <img src="{{producto?.productImages[0].imageURL}}" alt="Secondary Image">
+                </div>
+                <div class="secondary-image">
+                    <img src="{{producto?.productImages[1].imageURL}}" alt="Secondary Image">
+                </div>
+                <div class="secondary-image">
+                    <img src="{{producto?.productImages[2].imageURL}}" alt="Secondary Image">
+                </div>
+        </div>
+
+        <div class="productInfo">
+            <div>
+                <h1>{{producto?.productName}}</h1>
+            </div>
+            <div>
+                <h2>{{producto?.price | currency}}</h2>
+            </div>
+            <div>
+                <p>{{producto?.description}}</p>
+            </div>
+            <div>
+                <p>Stock</p>
+            </div>
+            <div>
+                <button mat-raised-button color="primary">Agregar al carrito</button>
+            </div>
+
+    </div>
+
+
+
+
+
+    <!-- <div class="product-imgs"></div>
     <div class="product-info">
         <h2>{{producto?.productName}}</h2>
         <p><b>Descripción:</b> {{producto?.description}}</p>
         <p> <b>Precio: </b>{{producto?.price | currency}}</p>
         <div>Acá va el botón para agregar al carrito</div>
-    </div>
+    </div> -->
 </div>

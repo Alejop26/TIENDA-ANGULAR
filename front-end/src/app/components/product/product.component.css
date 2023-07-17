@@ -1,1 +1,59 @@
-            
+.imagesContainer {
+    display: flex;
+    align-items: center; /* Centra verticalmente las imágenes */
+  }
+  
+  .mainContainer {
+    margin: 20px; /* Agrega un margen exterior */
+  }
+  
+  .main-image {
+    margin-right: 20px;
+    border: solid 1px black;
+    flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
+  }
+  
+  .main-image img {
+    max-width: 500px;
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+    border-radius: 10px;
+  }
+  
+  .secondaryImages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Agrega espacio entre las imágenes secundarias */
+  }
+  
+  .secondary-image img {
+    width: 100px;
+    height: 100px; /* Establece un tamaño fijo para las imágenes secundarias */
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer; /* Cambia el cursor al pasar por encima de las imágenes secundarias */
+  }
+  
+  .productInfo {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #2196f3;
+    color: white;
+    cursor: pointer;
+  }
+  
