@@ -1,1 +1,54 @@
-<p>admin works!</p>
+<div class="adminContainer">
+    <h2>Admin Panel - Products</h2>
+    
+    <div class="productList">
+      <div class="productCard" *ngFor="let product of products">
+        <div class="productImage">
+          <!-- <img [src]="product.image" alt="Product Image"> -->
+        </div>
+        <div class="productDetails">
+          <h3>{{ product.name }}</h3>
+          <p>Price: {{ product.price }}</p>
+          <p>Stock: {{ product.stock }}</p>
+          <div class="editControls">
+            <mat-form-field appearance="outline" class="inputField">
+              <mat-label>Price</mat-label>
+              <input matInput type="number" [(ngModel)]="product.price">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="inputField">
+              <mat-label>Stock Min</mat-label>
+              <input matInput type="number" [(ngModel)]="product.stockMin">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="inputField">
+              <mat-label>Stock Max</mat-label>
+              <input matInput type="number" [(ngModel)]="product.stockMax">
+            </mat-form-field>
+          </div>
+          <div class="buttons">
+            <button mat-raised-button color="primary" (click)="saveChanges(product)">Save</button>
+            <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--   
+    <div class="add-product">
+      <h3>Add New Product</h3>
+      <mat-form-field appearance="outline" class="inputField">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="newProduct.name">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" [(ngModel)]="newProduct.price">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" [(ngModel)]="newProduct.stock">
+      </mat-form-field>
+      <div class="buttons">
+        <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
+      </div>
+    </div>
+  </div> -->
+  
