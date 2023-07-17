@@ -6,12 +6,12 @@ interface Product {
   productID: number;
   name: string;
   price: number;
-  stock: number;
+  quantity: number;
   stockMin: number;
   stockMax: number;
-  product: { 
+  product: {
     price: number;
-  };
+  }
 }
 
 interface Image {
