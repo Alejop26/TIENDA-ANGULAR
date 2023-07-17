@@ -1,0 +1,31 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    background-color: #474af3;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    justify-content: center;
+    height: 30vw;
+}
+
+.btn-volver{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #474af3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    max-width: 150px;
+    margin: auto;
+}

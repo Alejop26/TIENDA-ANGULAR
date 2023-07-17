@@ -20,7 +20,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { SuccessComponent } from './components/success/success.component';//take care of this
 import { RouterModule, Routes } from '@angular/router';
+import { PayTestComponent } from './components/pay-test/pay-test.component';
 
 // Importar el modulo para hacer peticiones HTTP
 
@@ -45,7 +47,9 @@ const appRoutes:Routes = [
     HomeComponent,
     ProductComponent,
     AdminComponent,
-    PaymentComponent
+    PaymentComponent,
+    SuccessComponent,
+    PayTestComponent
   ],
   imports: [
     BrowserModule,

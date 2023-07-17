@@ -1,0 +1,5 @@
+ngGenerate11
+angularbootcampstore@gmail.com
+
+npm i // intalar dependencias
+npm run dev // inicializan servidor y concetar con la base de datos

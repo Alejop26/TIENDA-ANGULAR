@@ -29,7 +29,4 @@ export class HomeComponent {
     this.router.navigate([`/product/${id}`]);
   }
 
-
-
-
 }
