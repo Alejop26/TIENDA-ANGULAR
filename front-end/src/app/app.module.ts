@@ -23,6 +23,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { SuccessComponent } from './components/success/success.component';//take care of this
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 const appRoutes: Routes = [
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     AdminComponent,
     PaymentComponent,
     SuccessComponent,
-    PayTestComponent
+    PayTestComponent,
+    ProductDetailsComponent
   ],
   imports: [
     AppRoutingModule,
