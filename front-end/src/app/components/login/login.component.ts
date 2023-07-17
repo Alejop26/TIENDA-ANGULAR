@@ -88,7 +88,6 @@ export class LoginComponent implements OnInit {
               alert.style.display= "none";
             }, 3000);
           }
-          console.log(response);
           setTimeout(() => {
             //this.router.navigate(['/']);
           }, 2000);
@@ -109,8 +108,6 @@ export class LoginComponent implements OnInit {
   logOut() {
     const status = window.localStorage.getItem("loggedIn");
     if (status == "true") {
-      window.localStorage.setItem("loggedIn", "false");
-      console.log("Deslogueado");
       this.userId = "";
       setTimeout(() => {
         this.router.navigate(['/']);

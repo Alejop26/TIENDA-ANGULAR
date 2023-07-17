@@ -49,7 +49,9 @@ export class RegisterComponent {
     }
    }
    */
-
+   prb(){
+    
+   }
   //Función que maneja el registrar un usuario nuevo.
   submitRegister() {
     const loggedIn = window.localStorage.getItem("loggedIn");
@@ -94,7 +96,6 @@ export class RegisterComponent {
 
         //Peticion al servidor que registra un nuevo usuario en la base de datos.
         this.http.post(`${this.apiUrl}/api/users`, this.userData).subscribe(response => {
-          console.log(response); // Imprimir la respuesta del servidor
           this.router.navigate(['/login']); // Redirigir a la página de inicio de sesión
         }, error => {
           console.error(error); // Manejo de errores
