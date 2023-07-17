@@ -27,9 +27,6 @@ export class HomeComponent {
   //Funcion encargada de que al ejecutarse con el evento click, redirija a la pagina de producto.
   viewProductPage(id: number){
     this.router.navigate([`/product/${id}`]);
-  }
-
-
-
+  }
 
 }

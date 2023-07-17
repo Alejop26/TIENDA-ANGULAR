@@ -1,23 +1,20 @@
-
 <div class="Home-main-container">
-    
 
     <div class="Home-product-card" *ngFor="let product of data">
         <figure class="Home-card-image">
-            <img src="{{product.image}}" alt="Imagen de pablo">
-    
+            <img src="{{product.productImages[0].imageURL}}" alt="Imagen de pablo"(click)="viewProductPage(product.productID)" >
+
         </figure>
-    
+
         <div class='Home-card-info'  >
-            <h2 class="Home-card-title"> {{product.name}} </h2>
+            <h2 class="Home-card-title"> {{product.productName}} </h2>
 
-            <p class='Home-card-description'> <b>Description: </b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis esse non ut voluptatibus cumque suscipit explicabo eligendi. Error aliquid rem laborum numquam maxime commodi aspernatur tenetur quasi. Vitae, recusandae neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nam laboriosam provident et aliquid architecto voluptatum cumque deleniti maxime animi! Rem dignissimos vitae unde accusantium accusamus. Earum rem ab accusamus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente expedita, officia placeat dolorum suscipit nulla, possimus quia vitae nihil laboriosam dignissimos provident! Assumenda blanditiis temporibus eos modi consequuntur facere obcaecati? </p>
-            <p class='Home-card-price'> <b>Price: </b>{{product.id}}</p>
+            <!-- <p class='Home-card-description'> <b>Description: </b> {{product.description}} </p> -->
+            <p class='Home-card-price'> <b>Price: </b>{{product.price | currency}}</p>
 
-            <button class='Home-card-button' (click)="viewProductPage(product.id)">Show more information</button>
+            <button class='Home-card-button' mat-raised-button color="primary" (click)="viewProductPage(product.productID)">Más información</button>
         </div>
-    
-    </div>
+
+    </div>
 
 </div>
-
