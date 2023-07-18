@@ -25,6 +25,7 @@ import { ProductsComponent } from './components/cart/products/products.component
 import { FooterComponent } from './components/footer/footer.component';
 import { DefinitiveCartComponent } from './components/definitive-cart/definitive-cart.component';
 import { CartProductComponent } from './components/cart-product/cart-product.component';
+import { SuccessComponent } from './components/success/success.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,9 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'cart', component: DefinitiveCartComponent },
+  { path: 'paymentStatus/:userID',component: SuccessComponent },
   { path: '**', component: HomeComponent }, //Ruta no definida
+
 
 ]
 

@@ -93,31 +93,31 @@ export class DefinitiveCartComponent {
 
   }
 
-  deleteProduct(product: any){
-    this.http.delete(this.url + '/cart/'+ product.cartID).subscribe(
-      (response) => {
-        this.cdr.detectChanges();
-        console.log(`Producto ${product.productID} eliminado`, response);
-        this.cart = this.cart.filter((item) => item.cartID !== product.cartID);
-        // Realiza las acciones necesarias después de agregar el producto al carrito
-      }
-    );
+deleteProduct(product: any){
+  this.http.delete(this.url + '/cart/'+ product.cartID).subscribe(
+    (response) => {
+      this.cdr.detectChanges();
+      console.log(`Producto ${product.productID} eliminado`, response);
+      this.cart = this.cart.filter((item) => item.cartID !== product.cartID);
+      // Realiza las acciones necesarias después de agregar el producto al carrito
+    }
+  );
 
-    // this.location.reload();
-  }
+  // this.location.reload();
+}
 
-  calculateTotal(): number {
-    let total = 0;
-    this.cart.forEach(item => {
-      const price = Number(item.product.price);
-      const quantity = Number(item.quantity);
-      if (!isNaN(price) && !isNaN(quantity)) {
-        total += price * quantity;
-      }
-    });
-    this.total = total;
-    return total;
-  }
+calculateTotal(): number {
+  let total = 0;
+  this.cart.forEach(item => {
+    const price = Number(item.product.price);
+    const quantity = Number(item.quantity);
+    if (!isNaN(price) && !isNaN(quantity)) {
+      total += price * quantity;
+    }
+  });
+  this.total = total;
+  return total;
+}
 
 payment(){
   const data = {
