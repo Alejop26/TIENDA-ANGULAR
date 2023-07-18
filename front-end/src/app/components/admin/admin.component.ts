@@ -11,7 +11,7 @@ interface Product {
   stockMax: number;
   product: {
     price: number;
-  }
+  };
 }
 
 interface Image {
@@ -27,39 +27,55 @@ export class AdminComponent implements OnInit {
   products: Product[] = [];
   images: Image[] = [];
   apiUrl = "http://localhost:8080/api";
+  panelOpenState: boolean = false;
 
+  adminData: {
+    email: string;
+    password: string;
+  } = {
+    email: '',
+    password: ''
+  };
+
+  newProduct: Product = {
+    productID: 0,
+    name: '',
+    price: 0,
+    quantity: 0,
+    stockMin: 0,
+    stockMax: 0,
+    product: {
+      price: 0
+    }
+  };
+  
   constructor(private http: HttpClient, private inventoryService: InventoryService) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
-// Tomar todos los productos
-
   getProducts() {
     this.inventoryService.getData().subscribe((data: Product[]) => {
       this.products = data;
-      console.log(this.products)
+      console.log(this.products);
       for (let index = 0; index < this.products.length; index++) {
         const element = this.products[index];
         this.http.get<Image>(`${this.apiUrl}/images/${element.productID}`).subscribe((data: any) => {
           this.images.push(data[0].imageURL);
-          // console.log(this.images);
-        })
+        });
       }
     });
   }
-// ------------------------------------------------------------
+
   saveChanges(product: Product) {
-    // Lógica para guardar los cambios del producto
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
       console.log(data);
-    })
+    });
     console.log('Product Saved:', product);
   }
 
   deleteProduct(product: Product) {
-    // Lógica para eliminar el producto
     console.log(product.productID);
     this.http.delete<Product>(`${this.apiUrl}/images/${product.productID}`).subscribe((data: any) => {
       console.log(data);
@@ -70,8 +86,18 @@ export class AdminComponent implements OnInit {
     console.log('Product Deleted:', product);
   }
 
-  addProduct(newProduct: Product) {
-    // Lógica para agregar un nuevo producto
-    console.log('New Product:', newProduct);
+  addProduct() {
+    this.http.post<Product>(`${this.apiUrl}/products`, this.newProduct).subscribe(
+      (response) => {
+        console.log('Product added:', response);
+      },
+      (error) => {
+        console.error('Error adding product:', error);
+      }
+    );
+  }
+
+  submitUpdateProfile() {
+    console.log('Updating admin profile:', this.adminData);
   }
 }

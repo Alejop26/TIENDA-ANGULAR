@@ -60,7 +60,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Stock</mat-label>
-        <input matInput type="number" [(ngModel)]="newProduct.stock">
+        <input matInput type="number" [(ngModel)]="newProduct.quantity">
       </mat-form-field>
       <div class="buttons">
         <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
@@ -81,39 +81,23 @@
     <div class="registerContainer">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Register</mat-card-title>
+          <mat-card-title>Update Admin Profile</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <!-- <form (ngSubmit)="submitRegister()" class="registerForm" #loginForm="ngForm">
-            <mat-form-field appearance="outline">
-              <mat-label>Username</mat-label>
-              <input matInput placeholder="Username" id="usernameInput" name="username" [(ngModel)]="userData.username" required>
-            </mat-form-field>
+          <form (ngSubmit)="submitUpdateProfile()" class="updateProfileForm" #profileForm="ngForm">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput placeholder="Email" id="emailInput" name="email" [(ngModel)]="userData.email" required>
+              <input matInput placeholder="Email" id="emailInput" name="email" [(ngModel)]="adminData.email" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput type="password" placeholder="Password" id="passwordInput" name="password" [(ngModel)]="userData.password" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Full Name</mat-label>
-              <input matInput placeholder="Full Name" id="fullNameInput" name="fullName" [(ngModel)]="userData.fullName" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Phone</mat-label>
-              <input matInput placeholder="Phone" id="phoneInput" name="phone" [(ngModel)]="userData.phone" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Address" id="addressInput" name="address" [(ngModel)]="userData.address" required>
+              <input matInput type="password" placeholder="Password" id="passwordInput" name="password" [(ngModel)]="adminData.password" required>
             </mat-form-field>
             
             <div class="buttonContainer">
-              <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Register</button>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.form.valid">Update Profile</button>
             </div>
-          </form> -->
+          </form>
         </mat-card-content>
       </mat-card>
     </div>
