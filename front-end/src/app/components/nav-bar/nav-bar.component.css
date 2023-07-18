@@ -4,7 +4,7 @@ mat-toolbar.navBar {
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
 .navBar{
-  background-color: #000000;
+  background-color: #131313;
   color: gold;
 }
 

@@ -38,3 +38,8 @@
   height: 5%;
 
 }
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: black;
+  --mdc-protected-button-label-text-color: gold;
+}
