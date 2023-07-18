@@ -235,7 +235,7 @@ cartRouter.post('/', async (req, res) => {
 		});
 
 		// Verify if the stock is 1, if it is send an email to the admin to restock
-		if (inventory.quantity <= inventory.stockMin) {
+		if (inventory.quantity == 1 || inventory.quantity == 0|| inventory.quantity < inventory.stockMin) {
 			console.log(`my inventory is: ${inventory.quantity}`);
 			// Send email to admin
 			const mailOptions = {
