@@ -1,6 +1,6 @@
 <div class="adminContainer" *ngIf="showAdminPage" ><!---->
   <h2>Admin Panel - Products</h2>
-  
+
   <div class="productList">
     <div class="productCard" *ngFor="let product of products; let i = index">
       <div class="productImage">
@@ -44,7 +44,24 @@
 </div> 
 
 
-<!--   
+
+
+  <div class="errorContainer" *ngIf="showErrorPage">
+  <h1>Error, pagina no encontrada :c</h1>
+</div> 
+
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add New Product
+      </mat-panel-title>
+      <mat-panel-description>
+        Add a new product and their stats
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+   
     <div class="add-product">
       <h3>Add New Product</h3>
       <mat-form-field appearance="outline" class="inputField">
@@ -57,11 +74,46 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Stock</mat-label>
-        <input matInput type="number" [(ngModel)]="newProduct.stock">
+        <input matInput type="number" [(ngModel)]="newProduct.quantity">
       </mat-form-field>
       <div class="buttons">
         <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
       </div>
     </div>
-  </div> -->
-  
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Edit admin profile
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ panelOpenState ? 'open' : 'closed' }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    
+    <div class="registerContainer">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Update Admin Profile</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="submitUpdateProfile()" class="updateProfileForm" #profileForm="ngForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" id="emailInput" name="email" [(ngModel)]="adminData.email" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Password" id="passwordInput" name="password" [(ngModel)]="adminData.password" required>
+            </mat-form-field>
+            
+            <div class="buttonContainer">
+              <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.form.valid">Update Profile</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

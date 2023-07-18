@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatBadgeModule } from '@angular/material/badge'
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +22,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
 import { ProductsComponent } from './components/cart/products/products.component';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from './components/footer/footer.component';
 
 
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatExpansionModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
