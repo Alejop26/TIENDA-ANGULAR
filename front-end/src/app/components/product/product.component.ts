@@ -36,7 +36,11 @@ export class ProductComponent implements OnInit {
       this.producto = data;
       console.log(data)
       console.log(this.producto.productImages[0].imageURL)
-      this.images = [this.producto.productImages[0].imageURL, this.producto.productImages[1].imageURL, this.producto.productImages[2].imageURL];
+      try {
+        this.images = [this.producto.productImages[0].imageURL, this.producto.productImages[1].imageURL, this.producto.productImages[2].imageURL];
+      } catch (error) {
+        this.images = [this.producto.productImages[0].imageURL, "none", "none"];
+      }
       this.selectedImage = this.images[0];
     })
   }
@@ -92,16 +96,21 @@ export class ProductComponent implements OnInit {
       quantity: this.orderQuantity
     };
 
-    this.http.post(urladdtocart, body).subscribe(
-      (response) => {
-        console.log('Producto agregado al carrito:', response);
-        // Realiza las acciones necesarias después de agregar el producto al carrito
-      },
-      (error) => {
-        console.error('Error al agregar el producto al carrito:', error);
-        // Maneja el error de acuerdo a tus necesidades
-      }
-    );
+    if (this.orderQuantity === 0) {
+      alert("Error al agregar producto al carro de compras\nAgregue mínimo 1 en cantidad")
+    } else {
+      this.http.post(urladdtocart, body).subscribe(
+        (response) => {
+          console.log('Producto agregado al carrito:', response);
+          alert("Producto agregado al carrito");
+          // Realiza las acciones necesarias después de agregar el producto al carrito
+        },
+        (error) => {
+          console.error('Error al agregar el producto al carrito:', error);
+          // Maneja el error de acuerdo a tus necesidades
+        }
+      );
+    }
   }
 
 
@@ -116,6 +125,7 @@ export class ProductComponent implements OnInit {
       } 
       } else {
         console.log("no user");
+        alert("Inicie sesión para agregar productos al carrito")
         this.router.navigate(['/login']);// Redirecciona a login
       }
     } 
