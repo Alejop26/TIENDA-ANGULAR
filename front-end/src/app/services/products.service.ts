@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ProductsService {
 
   //Creamos variable para almacenar la URL de la API
-  private urlApi = "http://localhost:8080/api/products";
+  private urlApi = "https://timeless-classics-server.onrender.com/api/products";
 
   constructor(private http: HttpClient) { }
 

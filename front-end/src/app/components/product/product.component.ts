@@ -89,7 +89,7 @@ export class ProductComponent implements OnInit {
   //   })
     console.log("ordering ...", this.orderQuantity)
     //Hago solicitud para agregar producto al carrito del usuario
-    const urladdtocart = `http://localhost:8080/api/cart/`; 
+    const urladdtocart = `https://timeless-classics-server.onrender.com/api/cart/`; 
     const body = {
       userID: userID,
       productID: this.idProducto,

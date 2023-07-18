@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class InventoryService {
 
   //Creamos variable para almacenar la URL de la API que me devuelve el inventario
-  private urlApi = "http://localhost:8080/api/inventory";
+  private urlApi = "https://timeless-classics-server.onrender.com/api/inventory";
 
   constructor(private http: HttpClient) { }
 
