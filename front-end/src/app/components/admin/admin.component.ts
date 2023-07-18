@@ -38,11 +38,16 @@ export class AdminComponent implements OnInit {
   adminData: {
     email: string;
     password: string;
+    phone: string;
+    address: string;
   } = {
     email: '',
-    password: ''
+    password: '',
+    phone: '',
+    address: '',
   };
 
+  
   //create a new product
   productName: string;
   description: string;

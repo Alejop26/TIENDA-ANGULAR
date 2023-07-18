@@ -46,8 +46,13 @@ export class NavBarComponent implements OnInit {
   //rutas para navegar entre componentes
   loginRoute() {
     const adminModeStatus = window.localStorage.getItem("adminMode");
+    const loggedInStatus = window.localStorage.getItem("loggedIn");
+
     if(adminModeStatus == "true"){
       this.router.navigate(['/admin']);
+    }
+    else if(loggedInStatus == "true" && adminModeStatus == "false"){
+      this.router.navigate(['/home']);
     }
     else{
       this.router.navigate(['/login']);
@@ -81,8 +86,6 @@ export class NavBarComponent implements OnInit {
       }, 1500);
     }
   }
-
-
 }
 
 
