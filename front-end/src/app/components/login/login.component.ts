@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
           if (user.password === password) {
             window.localStorage.setItem("loggedIn", "true");
             window.localStorage.setItem("userInformation", JSON.stringify(response));
+            let route = '/';
             //En este condicional validamos que la contraseña ingresada por el usuario sea la
             //misma que la contraseña dentro del objeto usuario en la tabla users de la base de datos.
             //===============================================================================
@@ -86,7 +87,7 @@ export class LoginComponent implements OnInit {
             //Aqui hacemos un retraso en la aplicación, que lo que hace es redireccionarnos al home
             //pasado un segundo de la validación en la base de datos.
             setTimeout(() => {
-              this.router.navigate(['/'])
+              this.router.navigate([route])
             }, 1000);
 
             const prb = window.localStorage.getItem("userInformation");
@@ -96,6 +97,7 @@ export class LoginComponent implements OnInit {
               
               if(parseData.role == "admin"){
                 window.localStorage.setItem("adminMode", "true");
+                route = '/admin';
               }
             }
                         
