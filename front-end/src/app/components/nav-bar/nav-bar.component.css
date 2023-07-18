@@ -3,6 +3,10 @@ mat-toolbar.navBar {
     top: 0; /* Sets the sticky toolbar to be on top */
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
+.navBar{
+  background-color: #000000;
+  color: gold;
+}
 
 .navBarCss {
     height: 100px;
