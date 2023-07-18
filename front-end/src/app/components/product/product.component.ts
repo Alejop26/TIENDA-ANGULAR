@@ -84,7 +84,6 @@ export class ProductComponent implements OnInit {
   //     console.log(data);
   //   })
     console.log("ordering ...", this.orderQuantity)
-    //Necesito un método post que envié el id de producto, id de usuario y orderQuantity
     //Hago solicitud para agregar producto al carrito del usuario
     const urladdtocart = `http://localhost:8080/api/cart/`; 
     const body = {
