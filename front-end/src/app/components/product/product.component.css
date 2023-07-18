@@ -41,6 +41,7 @@ flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 
 .productInfo h3{
@@ -58,16 +59,18 @@ p {
     margin-bottom: 10px;
 }
 
-.order input{
-    width: 50px;
-    text-align: center;
-    height: auto;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
+.order{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
 }
 
-button {
+.quantity {
+    margin: 0;
+}
+
+.cartButton {
     padding: 10px 15px;
     font-size: 16px;
     border: none;
@@ -91,3 +94,6 @@ button {
     }
 }
 
+.cartButton:hover {
+    background-color: #0d3d6f;
+}
