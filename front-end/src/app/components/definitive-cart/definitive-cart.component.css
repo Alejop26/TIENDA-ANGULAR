@@ -2,6 +2,16 @@
     max-width: 200px;
 }
 
+.order {
+  display: flex;
+  flex-direction: row;
+}
+
+.quantity {
+  width: 30px;
+  margin: 0 5px;
+}
+
 .productContainer{
     display: flex;
     justify-content: center;

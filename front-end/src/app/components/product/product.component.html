@@ -32,7 +32,7 @@
         </div>
         <div class="order">
             <button [disabled]="minAmountHandler()" class="decrease" (click)="decreaseClickHandler()" > - </button>
-            <input type="text" [(ngModel)]="orderQuantity">
+            <p class="quantity">{{orderQuantity}}</p>
             <button [disabled]="comparationMaxAmount()" class="increase" (click)="increaseClickHandler()" > + </button>
         </div>
         <div>
