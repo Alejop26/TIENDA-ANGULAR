@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  apiUrl = "http://localhost:8080"; //Ruta base de la api.
+  apiUrl = "https://timeless-classics-server.onrender.com"; //Ruta base de la api.
 
   //Función que corre en el momento en que se instancia la clase.
   constructor(private authService: AuthService, private http: HttpClient, private router: Router) {

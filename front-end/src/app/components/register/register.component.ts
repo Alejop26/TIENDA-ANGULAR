@@ -20,7 +20,7 @@ interface User {
 })
 export class RegisterComponent {
 
-  apiUrl = "http://localhost:8080"; //Ruta base de la api
+  apiUrl = "https://timeless-classics-server.onrender.com"; //Ruta base de la api
 
   //Definimosel objeto de tipo User.
   userData: User = {
@@ -96,7 +96,7 @@ export class RegisterComponent {
         this.http.post(`${this.apiUrl}/api/users`, this.userData).subscribe(response => {
           this.router.navigate(['/login']); // Redirigir a la página de inicio de sesión
         }, error => {
-          console.error(error); // Manejo de errores
+          alert("Error al registrar usuario. \nRevise los campos ingresados")
         });
       }
 

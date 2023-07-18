@@ -17,7 +17,7 @@ export class DefinitiveCartComponent {
   cart: any[] = [];
   userID: number;
   total: number = 0;
-  url: string = "http://localhost:8080/api";
+  url: string = "https://timeless-classics-server.onrender.com/api";
   user: any;
   paymentLink: string = "";
 

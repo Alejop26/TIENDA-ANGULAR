@@ -30,7 +30,7 @@ interface Image {
 export class AdminComponent implements OnInit {
   products: Product[] = [];
   images: Image[] = [];
-  apiUrl = "http://localhost:8080/api";
+  apiUrl = "https://timeless-classics-server.onrender.com/api";
   panelOpenState: boolean = false;
 
 

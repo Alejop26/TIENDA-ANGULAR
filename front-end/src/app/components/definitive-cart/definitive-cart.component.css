@@ -72,7 +72,7 @@
     flex-direction: column;
     flex-grow: 1;
   }
-  
+
   .productContainer {
     display: flex;
     align-items: center;
@@ -167,8 +167,8 @@
   
   .payButton button {
     padding: 10px 20px;
-    background-color: gold;
-    color: #ffffff;
+    background-color: black;
+    color: gold;
     border: none;
     border-radius: 4px;
     font-weight: bold;
@@ -177,6 +177,7 @@
   
   .payButton button:hover {
     background-color: #0056b3;
+    color: white;
   }
   
   .payButton button:focus {
