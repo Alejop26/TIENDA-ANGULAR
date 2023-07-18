@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InventoryService } from '../../services/inventory.service';
+import { response } from 'express';
 
 interface Product {
   productID: number;
@@ -16,6 +17,11 @@ interface Product {
 
 interface Image {
   URL: string;
+}
+
+interface newProduct {
+  productID: number;
+
 }
 
 @Component({
@@ -37,17 +43,12 @@ export class AdminComponent implements OnInit {
     password: ''
   };
 
-  newProduct: Product = {
-    productID: 0,
-    name: '',
-    price: 0,
-    quantity: 0,
-    stockMin: 0,
-    stockMax: 0,
-    product: {
-      price: 0
-    }
-  };
+  //create a new product
+  productName: string;
+  description: string;
+  price: number;
+  imageFile: File;
+  
   
   constructor(private http: HttpClient, private inventoryService: InventoryService) {}
 
@@ -87,14 +88,20 @@ export class AdminComponent implements OnInit {
   }
 
   addProduct() {
-    this.http.post<Product>(`${this.apiUrl}/products`, this.newProduct).subscribe(
+    const formData = new FormData();
+    formData.append('productName', this.productName);
+    formData.append('description', this.description);
+    formData.append('price', this.price.toString());
+    formData.append('image', this.imageFile);
+    this.http.post(`${this.apiUrl}/products/`, formData).subscribe(
       (response) => {
-        console.log('Product added:', response);
+        console.log("Product created:", response);
       },
       (error) => {
-        console.error('Error adding product:', error);
+        console.error("Error creting product:", error);
+        
       }
-    );
+    )
   }
 
   submitUpdateProfile() {
