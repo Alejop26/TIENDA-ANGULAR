@@ -18,7 +18,7 @@ export class DefinitiveCartComponent {
   total: number = 0;
   url: string = "http://localhost:8080/api";
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient ) {
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient) {
     this.getCart();
   }
 
@@ -82,20 +82,21 @@ export class DefinitiveCartComponent {
         // Realiza las acciones necesarias después de agregar el producto al carrito
       },
       (error) => {
-        alert(`Error al disminuir unidad de producto ${product.product.productName}`);
+        alert(`Error al disminuir unidad de producto ${product.product.productName} no se pueden crear menos de 1 unidad`);
         // Maneja el error de acuerdo a tus necesidades
       }
     );
 
   }
 
-  eliminateProduct(product: any){
+  deleteProduct(product: any){
     this.http.delete(this.url + '/cart/'+ product.cartID).subscribe(
       (response) => {
         console.log(`Producto ${product.productID} eliminado`, response);
         // Realiza las acciones necesarias después de agregar el producto al carrito
       }
     );
+    // this.location.reload();
   }
 
 
