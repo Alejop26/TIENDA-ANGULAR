@@ -10,8 +10,8 @@ import dotenv from 'dotenv';
 const cartRouter = express.Router();
 dotenv.config();
 
-const EMAIL_USER = 'alejandro.parra3@utp.edu.co';
-const EMAIL_PASSWORD = 'tiendaangular';
+const EMAIL_USER = 'timele';
+const EMAIL_PASSWORD = 'ggvrbhsyxzcogubv';
 
 // GET
 
@@ -225,20 +225,22 @@ cartRouter.post('/', async (req, res) => {
 			where: { role: 'admin' },
 		});
 
+
 		const transporter = nodemailer.createTransport({
 			service: 'gmail',
 			auth: {
-				user: EMAIL_USER,
-				pass: EMAIL_PASSWORD,
+				user: "juan.sanchez8@utp.edu.co",
+				pass: "sistemas2022",
 			},
 		});
 
 		// Verify if the stock is 1, if it is send an email to the admin to restock
-		if (inventory.quantity === 0 || inventory.quantity === 1 || inventory.quantity < inventory.stockMin) {
+		if (inventory.quantity <= inventory.stockMin) {
+			console.log(`my inventory is: ${inventory.quantity}`);
 			// Send email to admin
 			const mailOptions = {
-				from: EMAIL_USER,
-				to: allUsersAdmin.map((user) => user.email),
+				from: "juan.sanchez8@utp.edu.co",
+				to: 'juan.sanchez8@utp.edu.co',
 				subject: 'Restock',
 				text: `The product ${product.productName} is running out of stock, please restock`,
 			};
