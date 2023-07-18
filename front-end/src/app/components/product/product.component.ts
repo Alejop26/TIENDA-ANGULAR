@@ -36,7 +36,11 @@ export class ProductComponent implements OnInit {
       this.producto = data;
       console.log(data)
       console.log(this.producto.productImages[0].imageURL)
-      this.images = [this.producto.productImages[0].imageURL, this.producto.productImages[1].imageURL, this.producto.productImages[2].imageURL];
+      try {
+        this.images = [this.producto.productImages[0].imageURL, this.producto.productImages[1].imageURL, this.producto.productImages[2].imageURL];
+      } catch (error) {
+        this.images = [this.producto.productImages[0].imageURL, "none", "none"];
+      }
       this.selectedImage = this.images[0];
     })
   }
