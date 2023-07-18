@@ -1,21 +1,23 @@
 .Home-main-container{
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
   padding: 0 15px;
+  align-items: center;
 }
 
 .Home-product-card {
-  background-color: rgba(0, 0, 0);
-  color: white;
+  background-color: #ffffff;
+  color: black;
   padding: 1%;
-  box-shadow: 1px 2px 30px black;
+  box-shadow: 1px 2px 7px black;
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 10px;
+  border-radius: 5px;
   justify-content: center;
   align-items: center;
 }
@@ -28,9 +30,9 @@
 .Home-card-image{
   min-width: 150px;
   height: auto;
-  border-radius: 45%;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 10px 2px 10px rgba(0, 0, 0, 0.301);
+  box-shadow: 1px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -69,6 +71,15 @@
   .Home-card-info {
     width: 90%;
   }
+}
+
+
+@media (max-width: 800px) {
+  .Home-main-container{
+    grid-template-columns: repeat(auto-fit, minmax(333px, 1fr));
+  }
+
+
 }
 
 
