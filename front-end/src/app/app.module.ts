@@ -23,6 +23,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
 import { ProductsComponent } from './components/cart/products/products.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DefinitiveCartComponent } from './components/definitive-cart/definitive-cart.component';
+import { CartProductComponent } from './components/cart-product/cart-product.component';
 
 
 const appRoutes: Routes = [
@@ -32,8 +34,9 @@ const appRoutes: Routes = [
   { path: 'product/:id', component: ProductComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'payment', component: PaymentComponent },
-  // { path: 'cart', component: CarComponent },
-  { path: '**', component: HomeComponent } //Ruta no definida
+  { path: 'cart', component: DefinitiveCartComponent },
+  { path: '**', component: HomeComponent }, //Ruta no definida
+
 ]
 
 
@@ -51,6 +54,8 @@ const appRoutes: Routes = [
     PayTestComponent,
     ProductsComponent,
     FooterComponent,
+    DefinitiveCartComponent,
+    CartProductComponent,
   ],
   imports: [
     AppRoutingModule,
