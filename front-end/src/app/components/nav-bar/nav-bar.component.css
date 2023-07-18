@@ -8,6 +8,14 @@ mat-toolbar.navBar {
   color: gold;
 }
 
+
+.logo-img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    scale: 3;
+}
+
 .navBarCss {
     height: 100px;
 }
@@ -45,8 +53,8 @@ mat-toolbar.navBar {
     top: 100px;
     right: 0;
     padding: 5px;
-    background-color: #3F51B5;
-    color: white;
+    background-color: black;
+    color: gold;
     display: flex;
     align-items: center;
     justify-content: center;
