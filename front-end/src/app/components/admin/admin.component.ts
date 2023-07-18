@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InventoryService } from '../../services/inventory.service';
-import { response } from 'express';
 
 interface Product {
   productID: number;
@@ -18,9 +17,13 @@ interface Product {
 }
 
 interface Image {
-  URL: string;
+  productID: number;
+  imageURL: string;
 }
 
+// interface ImageObject {
+//   key: string;
+// }
 
 @Component({
   selector: 'app-admin',
@@ -29,7 +32,9 @@ interface Image {
 })
 export class AdminComponent implements OnInit {
   products: Product[] = [];
+  productBackLog: Product[] = [];
   images: Image[] = [];
+  imagesList = [];
   apiUrl = "https://timeless-classics-server.onrender.com/api";
   panelOpenState: boolean = false;
 
@@ -67,29 +72,38 @@ export class AdminComponent implements OnInit {
     this.getProducts();
   }
 
-  dataValidationMin0(data: number) {
-    data < 0 ? data = 0 : data = data;
-    return data;
+  dataValidationMin0(productLog: number, data: number) {
+    let returnData = data < 0 ? productLog.toFixed(0) : data.toFixed(0);
+    return returnData;
   }
 
   getProducts() {
     this.inventoryService.getData().subscribe((data: Product[]) => {
       this.products = data;
-      console.log(this.products);
+      this.productBackLog = data;
+      // console.log(this.products);
+      // let array = [];
       for (let index = 0; index < this.products.length; index++) {
         const element = this.products[index];
+        // console.log(element);
         this.http.get<Image>(`${this.apiUrl}/images/${element.productID}`).subscribe((data: any) => {
-          this.images.push(data[0].imageURL);
+          // array.push(data[0]);
+          // console.log(data[0].imageURL);
         });
       }
+      // this.images
+      // console.log(array);
+      // const imagesList = this.images.sort((a, b) => a.imageID - b.imageID);
+      // console.log(this.images)
     });
   }
 
   saveChanges(product: Product) {
-    product.quantity = this.dataValidationMin0(product.quantity);
-    product.stockMin = this.dataValidationMin0(product.stockMin);
-    product.stockMax = this.dataValidationMin0(product.stockMax);
-    product.product.price = this.dataValidationMin0(product.product.price);
+    let productLog = this.productBackLog.find((element) => element.productID == product.productID) ? this.productBackLog.find((element) => element.productID == product.productID) : product;
+    // product.quantity = this.dataValidationMin0(1, product.quantity);
+    // product.stockMin = this.dataValidationMin0(1, product.stockMin);
+    // product.stockMax = this.dataValidationMin0(1, product.stockMax);
+    // product.product.price = this.dataValidationMin0(1, product.product.price);
 
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
       console.log(data);

@@ -71,16 +71,16 @@
   </mat-expansion-panel>
 </mat-accordion>
 
-<div class="adminContainer" *ngIf="showAdminPage" ><!---->
+<div class="adminContainer" *ngIf="showAdminPage" >
   <h2>Admin Panel - Products</h2>
 
   <div class="productList">
     <div class="productCard" *ngFor="let product of products; let i = index">
       <div class="productImage">
-        <img [src]="images[i]" alt="Product Image">
+        <!-- <img [src]="imagesList.product.productID" alt="Product Image"> -->
       </div>
       <div class="productDetails">
-        <h3>{{ product.name }}</h3>
+        <h3>{{ product.product.productName }}</h3>
         <p>Price: {{ product.product.price }}</p>
         <p>Stock: {{ product.quantity }}</p>
         <div class="editControls">
