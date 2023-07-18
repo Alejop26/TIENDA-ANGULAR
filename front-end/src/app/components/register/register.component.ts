@@ -20,7 +20,7 @@ interface User {
 })
 export class RegisterComponent {
 
-  apiUrl = "http://localhost:8080"; //Ruta base de la api
+  apiUrl = "https://timeless-classics-server.onrender.com/"; //Ruta base de la api
 
   //Definimosel objeto de tipo User.
   userData: User = {
