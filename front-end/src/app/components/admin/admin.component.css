@@ -116,3 +116,11 @@ h2 {
   --mdc-protected-button-container-color: black;
   --mdc-protected-button-label-text-color: gold
 }
+
+.errorContainer{
+  width: 100vw;
+  height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

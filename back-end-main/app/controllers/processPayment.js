@@ -18,6 +18,11 @@ const openStripePaymentLink = async (
       ? process.env.PROD_URL
       : process.env.DEV_URL;
 
+    const urlFRONT =
+      process.env.NODE_ENV === "production"
+        ? process.env.PROD_FRONTEND_URL
+        : process.env.DEV_FRONTEND_URL;
+
   const products = [];
   // Obtaining the products of the cart items
   for (const cart of carts) {
@@ -45,7 +50,7 @@ const openStripePaymentLink = async (
       line_items: products,
       mode: "payment",
       success_url: `${url}/api/payment/success?userID=${userID}&totalPrice=${totalPrice}&shippingAddress=${shippingAddress}`,
-      cancel_url: `${url}/api/payment/cancel`,
+      cancel_url: `${urlFRONT}/cart`,
     });
 
     if (!session) {
