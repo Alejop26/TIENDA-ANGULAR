@@ -102,6 +102,7 @@ export class ProductComponent implements OnInit {
       this.http.post(urladdtocart, body).subscribe(
         (response) => {
           console.log('Producto agregado al carrito:', response);
+          alert("Producto agregado al carrito");
           // Realiza las acciones necesarias después de agregar el producto al carrito
         },
         (error) => {
@@ -124,6 +125,7 @@ export class ProductComponent implements OnInit {
       } 
       } else {
         console.log("no user");
+        alert("Inicie sesión para agregar productos al carrito")
         this.router.navigate(['/login']);// Redirecciona a login
       }
     } 

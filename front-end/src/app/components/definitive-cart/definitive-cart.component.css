@@ -1,4 +1,4 @@
-.imageContainer img{
+/* .imageContainer img{
     max-width: 200px;
 }
 
@@ -51,4 +51,166 @@
 
 .delete button:active {
   background-color: #990000;
-}
+} */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .main-container__header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .productsContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .productContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .productContainer:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .imageContainer {
+    margin-right: 10px;
+  }
+  
+  .imageContainer img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .productInfo {
+    flex: 1;
+  }
+  
+  .productInfo h1 {
+    margin: 0;
+  }
+  
+  .prices {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .order {
+    display: flex;
+    align-items: center;
+  }
+  
+  .order button {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .decrease,
+  .increase {
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  .delete button {
+    padding: 8px 16px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .delete button:hover {
+    background-color: #cc0000;
+  }
+  
+  .delete button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3);
+  }
+  
+  .delete button:active {
+    background-color: #990000;
+  }
+  
+  .total {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .payButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .payButton button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .payButton button:hover {
+    background-color: #0056b3;
+  }
+  
+  .payButton button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+  }
+  
+  .payButton button:active {
+    background-color: #0047a2;
+  }
+  
+  @media (max-width: 600px) {
+    .productContainer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .imageContainer {
+      margin-bottom: 10px;
+    }
+  
+    .prices {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .order {
+      margin-top: 10px;
+      justify-content: flex-start;
+    }
+  
+    .order button {
+      padding: 5px 8px;
+      font-size: 14px;
+    }
+  }
+  
+  
