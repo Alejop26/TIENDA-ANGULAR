@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon'
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-success',
@@ -7,5 +8,9 @@ import {MatIconModule} from '@angular/material/icon'
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent {
+  constructor( private router:Router){}
 
+  inicio(){
+    this.router.navigate(['/']);
+  }
 }

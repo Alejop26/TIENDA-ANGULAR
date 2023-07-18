@@ -1,12 +1,11 @@
 .main-container{
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 15px;
     margin-left: 20%;
     margin-right: 20%;
     text-align: center;
-    background-color: #474af3;
+    background-color: #131313;
     border-radius: 10px;
     padding: 20px;
     color: white;
@@ -18,14 +17,19 @@
 .btn-volver{
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #474af3;
-    color: white;
+    background-color: gold;
+    color: black;
     border: none;
     border-radius: 5px;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    max-width: 150px;
+    margin: auto;
+}
+
+.main-container img{
     max-width: 150px;
     margin: auto;
 }

@@ -74,7 +74,7 @@ paymentRouter.get("/success", async (req, res) => {
         where: { userID, cartStatus: "active" },
       }
     );
-
+      console.log("URL", url);
     return res.redirect(`${url}/paymentStatus/${userID}`);
   } catch (error) {
     console.log(error);

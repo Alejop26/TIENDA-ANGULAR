@@ -23,25 +23,8 @@ export class NavBarComponent implements OnInit {
     this.cartService.$miCarrito.subscribe((data) => {
       this.counter = this.cartService.obtenerTotalProductos();
     });
-
-    this.handleTitleDisplay();
-    window.addEventListener('resize', this.handleTitleDisplay);
   }
 
-  handleTitleDisplay() {
-    const titleElement = document.getElementById('title');
-    if (titleElement) {
-      if (window.innerWidth <= 600) {
-        titleElement.style.whiteSpace = 'normal';
-      } else {
-        titleElement.style.whiteSpace = 'nowrap';
-      }
-    }
-  }
-
-  ngOnDestroy() {
-    window.removeEventListener('resize', this.handleTitleDisplay);
-  }
 
   //rutas para navegar entre componentes
   loginRoute() {
@@ -69,11 +52,11 @@ export class NavBarComponent implements OnInit {
       setTimeout(() => {
         window.localStorage.setItem("userInformation", "");
         window.localStorage.setItem("loggedIn", "false");
-      }, 1000);
+      }, 1500);
       window.localStorage.setItem("adminMode", "false");
       const alert = document.querySelector(".logOutAlert") as HTMLElement;
       alert.style.display = "flex";
-
+      
       setTimeout(() => {
         alert.style.display = "none";
       }, 1500);

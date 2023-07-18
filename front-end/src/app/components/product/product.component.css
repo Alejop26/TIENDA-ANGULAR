@@ -39,6 +39,8 @@ flex: 0 0 40%; /* Ocupa el 70% del espacio disponible horizontalmente */
 
 .productInfo {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .productInfo h3{
@@ -70,9 +72,22 @@ button {
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    background-color: #1461a0;
-    color: white;
+    background-color: black;
+    color: gold;
     cursor: pointer;
 }
 
+@media (max-width: 950px) {
+    .imagesContainer {
+        flex-direction: column;
+    }
+
+    .order, .contenedorBoton {
+        align-self: center;
+    }
+
+    .secondaryImages {
+        flex-direction: row;
+    }
+}
 

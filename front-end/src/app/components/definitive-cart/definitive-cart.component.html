@@ -1,0 +1,45 @@
+<div class="main-container">
+    <div class="main-container__header">
+        <h1>TU CARRITO</h1>
+    </div>
+
+    <div class="productsContainer">
+
+        <div class="productContainer" *ngFor="let item of cart">
+            <div class="imageContainer">
+                <img src="{{item.productImages[0].imageURL}}" alt="Imagen del Producto">
+            </div>
+            <div class="productInfo">
+                <div>
+                    <h1>{{item.product.productName}}</h1>
+                </div>
+                <div class="prices">
+                    <h2>Unit. Price: {{item.product.price | currency}}</h2>
+                    <h2>Total Price: {{item.product.price * item.quantity | currency}}</h2>
+                </div>
+            </div>
+            <div class="order">
+                <button  class="decrease" (click)="decreaseUnit(item)" > - </button>
+                <h4>{{item.quantity}}</h4>
+                <button  class="increase" (click)="addUnit(item)" > + </button>
+            </div>
+        
+            <div class="delete">
+                <button (click)="deleteProduct(item)">Eliminar</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="total">
+                <h2>Total: {{calculateTotal() | currency}}</h2>
+            </div>
+            <div class="payButton">
+                <button (click)="payment()">Pagar</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
