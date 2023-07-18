@@ -77,7 +77,7 @@
   <div class="productList">
     <div class="productCard" *ngFor="let product of products; let i = index">
       <div class="productImage">
-        <!-- <img [src]="imagesList.product.productID" alt="Product Image"> -->
+        <img [src]="images[i]" alt="Product Image">
       </div>
       <div class="productDetails">
         <h3>{{ product.product.productName }}</h3>

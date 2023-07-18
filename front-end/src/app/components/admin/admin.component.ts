@@ -85,14 +85,13 @@ export class AdminComponent implements OnInit {
       // let array = [];
       for (let index = 0; index < this.products.length; index++) {
         const element = this.products[index];
-        // console.log(element);
         this.http.get<Image>(`${this.apiUrl}/images/${element.productID}`).subscribe((data: any) => {
-          // array.push(data[0]);
-          // console.log(data[0].imageURL);
+          this.images[index] = data[0].imageURL; // Store the image at the corresponding index
         });
       }
       // this.images
-      // console.log(array);
+      // this.images.sort((a, b) => a.productID - b.productID);
+      console.log(this.images);
       // const imagesList = this.images.sort((a, b) => a.imageID - b.imageID);
       // console.log(this.images)
     });
