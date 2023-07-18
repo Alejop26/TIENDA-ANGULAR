@@ -14,14 +14,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PayTestComponent } from './components/pay-test/pay-test.component';
-import { ProductsComponent } from './components/cart/products/products.component';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from './components/footer/footer.component';
 import { DefinitiveCartComponent } from './components/definitive-cart/definitive-cart.component';
@@ -48,13 +46,11 @@ const appRoutes: Routes = [
     LoginComponent,
     NavBarComponent,
     RegisterComponent,
-    CartComponent,
     HomeComponent,
     ProductComponent,
     AdminComponent,
     PaymentComponent,
     PayTestComponent,
-    ProductsComponent,
     FooterComponent,
     DefinitiveCartComponent,
     CartProductComponent,
