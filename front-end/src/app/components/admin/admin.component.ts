@@ -24,6 +24,13 @@ interface newProduct {
 
 }
 
+interface Users {
+  email: string;
+  password: string;
+  phone: string;
+  address: string;
+}
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -35,36 +42,31 @@ export class AdminComponent implements OnInit {
   apiUrl = "http://localhost:8080/api";
   panelOpenState: boolean = false;
 
-  adminData: {
-    email: string;
-    password: string;
-    phone: string;
-    address: string;
-  } = {
+  adminData: Users = {
     email: '',
     password: '',
     phone: '',
     address: '',
   };
 
-  
+
   //create a new product
   productName: string;
   description: string;
   price: number;
   imageFile: File;
-  
-  
-  showAdminPage:boolean = false;
-  showErrorPage:boolean = true;
 
-  
+
+  showAdminPage: boolean = false;
+  showErrorPage: boolean = true;
+
+
   constructor(private http: HttpClient, private inventoryService: InventoryService) {
     const adminMode = window.localStorage.getItem("adminMode");
-    if(adminMode == "true"){
-       this.showAdminPage = true;
-       this.showErrorPage = false;
-     }
+    if (adminMode == "true") {
+      this.showAdminPage = true;
+      this.showErrorPage = false;
+    }
   }
 
   ngOnInit(): void {
@@ -114,12 +116,43 @@ export class AdminComponent implements OnInit {
       },
       (error) => {
         console.error("Error creting product:", error);
-        
+
       }
     )
+
   }
 
   submitUpdateProfile() {
+    let Email = document.querySelector("#emailInput") as HTMLInputElement;
+    let Password = document.querySelector("#Password") as HTMLInputElement;
+    let Phone = document.querySelector("#phone") as HTMLInputElement;
+    let Address = document.querySelector("#address") as HTMLInputElement;
+
+    if(Email && Password && Phone && Address){
+      let EmailValue = Email.value;
+    let PasswordValue = Password.value;
+    let PhoneValue = Phone.value;
+    let AddressValue = Address.value;
+
+    this.adminData = {
+      email: EmailValue,
+      password: PasswordValue,
+      phone: PhoneValue,
+      address: AddressValue
+    }
     console.log('Updating admin profile:', this.adminData);
+    // this.http.put(${this.apiUrl}/admin, this.adminData).subscribe( (response) => { console.log(response); } ); 
+    const data = window.localStorage.getItem("userInformation");
+    if (data != null) {
+      let parseData = JSON.parse(data);
+      this.http.put(`${this.apiUrl}/users/:${parseData.userID}`, this.adminData).subscribe(
+        (response) => {
+          console.log(response);
+        }, error => {
+          console.error(error); // Manejo de errores
+        });
+    }
+    }
+    
   }
 }

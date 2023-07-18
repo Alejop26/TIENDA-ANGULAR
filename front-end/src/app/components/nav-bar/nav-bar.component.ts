@@ -56,7 +56,7 @@ export class NavBarComponent implements OnInit {
       window.localStorage.setItem("adminMode", "false");
       const alert = document.querySelector(".logOutAlert") as HTMLElement;
       alert.style.display = "flex";
-      
+      this.router.navigate(['/home']);
       setTimeout(() => {
         alert.style.display = "none";
       }, 1500);
