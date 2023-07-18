@@ -39,8 +39,6 @@ const appRoutes: Routes = [
   { path: 'cart', component: DefinitiveCartComponent },
   { path: 'paymentStatus/:userID',component: SuccessComponent },
   { path: '**', component: HomeComponent }, //Ruta no definida
-
-
 ]
 
 

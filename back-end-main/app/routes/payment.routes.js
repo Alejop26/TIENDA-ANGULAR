@@ -85,6 +85,7 @@ paymentRouter.get("/success", async (req, res) => {
 // Obtaining the payment cancel page (base path /api/payment/cancel)
 paymentRouter.get("/cancel", (req, res) => {
   res.status(200).json({ message: "Payment cancelled" });
+  return res.redirect(`${url}/paymentStatus/${userID}`);
 });
 
 export default paymentRouter;
