@@ -1,3 +1,9 @@
+mat-toolbar.navBar {
+    position: sticky;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
 .navBarCss {
     height: 100px;
 }
@@ -26,6 +32,7 @@
 @media screen and (max-width: 600px) {
     .title {
         font-size: 20px;
+        white-space: normal;
     }
 }
 

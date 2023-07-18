@@ -1,6 +1,0 @@
-.main-app{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row: auto 1fr auto;
-    grid-row-gap: 20px;
-}
