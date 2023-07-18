@@ -11,11 +11,11 @@ export class InventoryService {
   private urlApi = "https://timeless-classics-server.onrender.com/api/inventory";
 
   constructor(private http: HttpClient) { }
-
+//Creamos el método para obtener todos los productos
   public getData(): Observable<any>{
     return this.http.get<any>(this.urlApi);
   }
-
+//  Creamos el método para obtener un producto por su id
   public getOne(id: number): Observable<any> {
     return this.http.get<any>(`${this.urlApi}/product/${id}`)
   }
