@@ -24,6 +24,13 @@ interface newProduct {
 
 }
 
+interface Users {
+  email: string;
+  password: string;
+  phone: string;
+  address: string;
+}
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -35,39 +42,36 @@ export class AdminComponent implements OnInit {
   apiUrl = "http://localhost:8080/api";
   panelOpenState: boolean = false;
 
-  adminData: {
-    email: string;
-    password: string;
-    phone: string;
-    address: string;
-  } = {
-    email: '',
-    password: '',
-    phone: '',
-    address: '',
-  };
 
-  
   //create a new product
   productName: string;
   description: string;
   price: number;
   imageFile: File;
-  
-  
-  showAdminPage:boolean = false;
-  showErrorPage:boolean = true;
 
-  
+
+  showAdminPage: boolean = false;
+  showErrorPage: boolean = true;
+
+  adminData: {
+    userID: number;
+    email: string;
+    password: string;
+    phone: string;
+    address: string;
+  };
   constructor(private http: HttpClient, private inventoryService: InventoryService) {
     const adminMode = window.localStorage.getItem("adminMode");
-    if(adminMode == "true"){
-       this.showAdminPage = true;
-       this.showErrorPage = false;
-     }
+    if (adminMode == "true") {
+      this.showAdminPage = true;
+      this.showErrorPage = false;
+    }
   }
 
   ngOnInit(): void {
+    const storage = window.localStorage.getItem('userInformation');
+    storage ? this.adminData = JSON.parse(storage) : console.log('No data found');
+    console.log(this.adminData);
     this.getProducts();
   }
 
@@ -88,7 +92,7 @@ export class AdminComponent implements OnInit {
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
       console.log(data);
     });
-    console.log('Product Saved:', product);
+    console.log('Producto guardado:', product);
   }
 
   deleteProduct(product: Product) {
@@ -99,7 +103,7 @@ export class AdminComponent implements OnInit {
     this.http.delete<Product>(`${this.apiUrl}/products/${product.productID}`).subscribe((data: any) => {
       console.log(data);
     });
-    console.log('Product Deleted:', product);
+    console.log('Producto eliminado:', product);
   }
 
   addProduct() {
@@ -110,16 +114,21 @@ export class AdminComponent implements OnInit {
     formData.append('image', this.imageFile);
     this.http.post(`${this.apiUrl}/products/`, formData).subscribe(
       (response) => {
-        console.log("Product created:", response);
+        console.log("Producto creado:", response);
       },
       (error) => {
-        console.error("Error creting product:", error);
-        
+        console.error("Error creando producto:", error);
       }
     )
+
   }
 
   submitUpdateProfile() {
-    console.log('Updating admin profile:', this.adminData);
+    this.http.put(`${this.apiUrl}/users/${this.adminData.userID}`, this.adminData).subscribe(
+      (response) => {
+        console.log(response);
+        alert("Sus cambios han sido aplicados.");
+      }
+    );
   }
 }

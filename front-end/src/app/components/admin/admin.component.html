@@ -44,7 +44,7 @@
           <mat-card-title>Update Admin Profile</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <form (ngSubmit)="submitUpdateProfile()" class="updateProfileForm" #profileForm="ngForm">
+          <form  class="updateProfileForm" #profileForm="ngForm">
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput placeholder="Email" id="emailInput" name="email" [(ngModel)]="adminData.email" required>
@@ -62,7 +62,7 @@
               <input matInput type="password" placeholder="Password" id="passwordInput" name="password" [(ngModel)]="adminData.password" required>
             </mat-form-field>
             <div class="buttonContainer">
-              <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.form.valid">Update Profile</button>
+              <button (click)="submitUpdateProfile()" mat-raised-button color="primary" type="submit" [disabled]="!profileForm.form.valid">Update Profile</button>
             </div>
           </form>
         </mat-card-content>
@@ -116,11 +116,5 @@
   <h1>Error, pagina no encontrada :c</h1>
 </div> 
 
-
-
-
-  <div class="errorContainer" *ngIf="showErrorPage">
-  <h1>Error, pagina no encontrada :c</h1>
-</div> 
 
 
