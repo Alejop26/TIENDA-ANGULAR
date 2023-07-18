@@ -13,10 +13,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./definitive-cart.component.css']
 })
 export class DefinitiveCartComponent {
-  cart: any = [];
+  cart: any[] = [];
   userID: number;
   total: number = 0;
-  url: string = "http://localhost:8080/api/";
+  url: string = "http://localhost:8080/api";
 
   constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient ) {
     this.getCart();
@@ -39,12 +39,64 @@ export class DefinitiveCartComponent {
 
   getCart() {
     this.getUser();
-    this.http.get(this.url + "cart/user/" + this.userID + "/active").subscribe((data: any) => {
-      this.cart = JSON.parse(data);
+    this.http.get(this.url + "/cart/user/" + this.userID + "/active").subscribe((data: any) => {
+      //console.log(data);
+      this.cart = data;
+      console.log(this.cart);
+      console.log(this.cart[0].productImages[0].imageURL);
     });
   }
 
-    
+  addUnit(product: any){
+    const body = {
+      userID: this.userID,
+      productID: product.productID,
+      quantity: 1
+    };
+
+    this.http.post(this.url + '/cart', body).subscribe(
+      (response) => {
+        console.log(`Unidad de producto ${product.productID} añadida`, response);
+        product.quantity++;
+        // Realiza las acciones necesarias después de agregar el producto al carrito
+      },
+      (error) => {
+        alert(`Error al añadir unidad de producto ${product.product.productName}, NO hay suficiente inventario`);
+        // Maneja el error de acuerdo a tus necesidades
+      }
+    );
+
+  }
+
+  decreaseUnit(product: any){
+    const body = {
+      userID: this.userID,
+      productID: product.productID,
+      quantity: -1
+    };
+
+    this.http.post(this.url + '/cart', body).subscribe(
+      (response) => {
+        console.log(`Unidad de producto ${product.productID} disminuida`, response);
+        product.quantity--;
+        // Realiza las acciones necesarias después de agregar el producto al carrito
+      },
+      (error) => {
+        alert(`Error al disminuir unidad de producto ${product.product.productName}`);
+        // Maneja el error de acuerdo a tus necesidades
+      }
+    );
+
+  }
+
+  eliminateProduct(product: any){
+    this.http.delete(this.url + '/cart/'+ product.cartID).subscribe(
+      (response) => {
+        console.log(`Producto ${product.productID} eliminado`, response);
+        // Realiza las acciones necesarias después de agregar el producto al carrito
+      }
+    );
+  }
 
 
 }
