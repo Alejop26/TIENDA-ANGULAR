@@ -67,6 +67,11 @@ export class AdminComponent implements OnInit {
     this.getProducts();
   }
 
+  dataValidationMin0(data: number) {
+    data < 0 ? data = 0 : data = data;
+    return data;
+  }
+
   getProducts() {
     this.inventoryService.getData().subscribe((data: Product[]) => {
       this.products = data;
@@ -81,6 +86,11 @@ export class AdminComponent implements OnInit {
   }
 
   saveChanges(product: Product) {
+    product.quantity = this.dataValidationMin0(product.quantity);
+    product.stockMin = this.dataValidationMin0(product.stockMin);
+    product.stockMax = this.dataValidationMin0(product.stockMax);
+    product.product.price = this.dataValidationMin0(product.product.price);
+
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
       console.log(data);
     });
