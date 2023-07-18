@@ -68,3 +68,11 @@
     justify-content: flex-end; /* Alinea los elementos internos a la derecha del contenedor */
   }
   
+
+  .errorContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+  }
