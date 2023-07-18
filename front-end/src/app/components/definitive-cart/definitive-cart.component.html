@@ -29,6 +29,15 @@
             </div>
         </div>
 
+        <div>
+            <div class="total">
+                <h2>Total: {{calculateTotal() | currency}}</h2>
+            </div>
+            <div class="payButton">
+                <button (click)="payment()">Pagar</button>
+            </div>
+        </div>
+
     </div>
 
 
