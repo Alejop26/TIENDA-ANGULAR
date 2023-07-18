@@ -68,7 +68,7 @@ p {
     margin: 0;
 }
 
-button {
+.cartButton {
     padding: 10px 15px;
     font-size: 16px;
     border: none;
@@ -78,4 +78,6 @@ button {
     cursor: pointer;
 }
 
-
+.cartButton:hover {
+    background-color: #0d3d6f;
+}
