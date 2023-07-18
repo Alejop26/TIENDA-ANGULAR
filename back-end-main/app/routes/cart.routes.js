@@ -10,6 +10,9 @@ import dotenv from 'dotenv';
 const cartRouter = express.Router();
 dotenv.config();
 
+const EMAIL_USER = 'alejandro.parra3@utp.edu.co';
+const EMAIL_PASSWORD = 'tiendaangular';
+
 // GET
 
 // Obtaining cart items by userID and their corresponding products (base path /api/cart/user/:userID)
@@ -225,8 +228,8 @@ cartRouter.post('/', async (req, res) => {
 		const transporter = nodemailer.createTransport({
 			service: 'gmail',
 			auth: {
-				user: process.env.EMAIL_USER,
-				pass: process.env.EMAIL_PASSWORD,
+				user: EMAIL_USER,
+				pass: EMAIL_PASSWORD,
 			},
 		});
 
@@ -234,7 +237,7 @@ cartRouter.post('/', async (req, res) => {
 		if (inventory.quantity === 0 || inventory.quantity === 1 || inventory.quantity < inventory.stockMin) {
 			// Send email to admin
 			const mailOptions = {
-				from: process.env.EMAIL_USER,
+				from: EMAIL_USER,
 				to: allUsersAdmin.map((user) => user.email),
 				subject: 'Restock',
 				text: `The product ${product.productName} is running out of stock, please restock`,
