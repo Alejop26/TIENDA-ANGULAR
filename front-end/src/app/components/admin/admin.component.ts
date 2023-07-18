@@ -6,11 +6,13 @@ import { response } from 'express';
 interface Product {
   productID: number;
   name: string;
-  price: number;
   quantity: number;
   stockMin: number;
   stockMax: number;
   product: {
+    productID: number;
+    productName: string;
+    description: string;
     price: number;
   };
 }
@@ -19,17 +21,6 @@ interface Image {
   URL: string;
 }
 
-interface newProduct {
-  productID: number;
-
-}
-
-interface Users {
-  email: string;
-  password: string;
-  phone: string;
-  address: string;
-}
 
 @Component({
   selector: 'app-admin',
@@ -60,6 +51,7 @@ export class AdminComponent implements OnInit {
     phone: string;
     address: string;
   };
+
   constructor(private http: HttpClient, private inventoryService: InventoryService) {
     const adminMode = window.localStorage.getItem("adminMode");
     if (adminMode == "true") {
@@ -90,6 +82,9 @@ export class AdminComponent implements OnInit {
 
   saveChanges(product: Product) {
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
+      console.log(data);
+    });
+    this.http.put<Product>(`${this.apiUrl}/products/${product.product.productID}`, product.product).subscribe((data: any) => {
       console.log(data);
     });
     console.log('Producto guardado:', product);
