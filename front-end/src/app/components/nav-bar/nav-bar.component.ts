@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../../services/cart.service';
 
 
 @Component({
@@ -9,22 +8,13 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./nav-bar.component.css']
 })
 
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
-  counter = 0;
-  
-  constructor(private router: Router, private cartService: CartService) { 
+  constructor(private router: Router) { 
     const adminModeStatus = window.localStorage.getItem("adminMode");
     const loggedInStatus = window.localStorage.getItem("loggedIn");
     const userInformationStatus = window.localStorage.getItem("userInformation");
   }
-
-  ngOnInit(): void {
-    this.cartService.$miCarrito.subscribe((data) => {
-      this.counter = this.cartService.obtenerTotalProductos();
-    });
-  }
-
 
   //rutas para navegar entre componentes
   loginRoute() {
