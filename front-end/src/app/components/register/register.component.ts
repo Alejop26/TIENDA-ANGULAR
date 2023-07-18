@@ -49,9 +49,7 @@ export class RegisterComponent {
     }
    }
    */
-   prb(){
-    
-   }
+  
   //Función que maneja el registrar un usuario nuevo.
   submitRegister() {
     const loggedIn = window.localStorage.getItem("loggedIn");
