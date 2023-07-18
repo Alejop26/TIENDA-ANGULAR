@@ -42,13 +42,6 @@ export class AdminComponent implements OnInit {
   apiUrl = "http://localhost:8080/api";
   panelOpenState: boolean = false;
 
-  adminData: Users = {
-    email: '',
-    password: '',
-    phone: '',
-    address: '',
-  };
-
 
   //create a new product
   productName: string;
@@ -60,7 +53,13 @@ export class AdminComponent implements OnInit {
   showAdminPage: boolean = false;
   showErrorPage: boolean = true;
 
-
+  adminData: {
+    userID: number;
+    email: string;
+    password: string;
+    phone: string;
+    address: string;
+  };
   constructor(private http: HttpClient, private inventoryService: InventoryService) {
     const adminMode = window.localStorage.getItem("adminMode");
     if (adminMode == "true") {
@@ -70,6 +69,9 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const storage = window.localStorage.getItem('userInformation');
+    storage ? this.adminData = JSON.parse(storage) : console.log('No data found');
+    console.log(this.adminData);
     this.getProducts();
   }
 
@@ -90,7 +92,7 @@ export class AdminComponent implements OnInit {
     this.http.put<Product>(`${this.apiUrl}/inventory/product/${product.productID}`, product).subscribe((data: any) => {
       console.log(data);
     });
-    console.log('Product Saved:', product);
+    console.log('Producto guardado:', product);
   }
 
   deleteProduct(product: Product) {
@@ -101,7 +103,7 @@ export class AdminComponent implements OnInit {
     this.http.delete<Product>(`${this.apiUrl}/products/${product.productID}`).subscribe((data: any) => {
       console.log(data);
     });
-    console.log('Product Deleted:', product);
+    console.log('Producto eliminado:', product);
   }
 
   addProduct() {
@@ -112,47 +114,21 @@ export class AdminComponent implements OnInit {
     formData.append('image', this.imageFile);
     this.http.post(`${this.apiUrl}/products/`, formData).subscribe(
       (response) => {
-        console.log("Product created:", response);
+        console.log("Producto creado:", response);
       },
       (error) => {
-        console.error("Error creting product:", error);
-
+        console.error("Error creando producto:", error);
       }
     )
 
   }
 
   submitUpdateProfile() {
-    let Email = document.querySelector("#emailInput") as HTMLInputElement;
-    let Password = document.querySelector("#Password") as HTMLInputElement;
-    let Phone = document.querySelector("#phone") as HTMLInputElement;
-    let Address = document.querySelector("#address") as HTMLInputElement;
-
-    if(Email && Password && Phone && Address){
-      let EmailValue = Email.value;
-    let PasswordValue = Password.value;
-    let PhoneValue = Phone.value;
-    let AddressValue = Address.value;
-
-    this.adminData = {
-      email: EmailValue,
-      password: PasswordValue,
-      phone: PhoneValue,
-      address: AddressValue
-    }
-    console.log('Updating admin profile:', this.adminData);
-    // this.http.put(${this.apiUrl}/admin, this.adminData).subscribe( (response) => { console.log(response); } ); 
-    const data = window.localStorage.getItem("userInformation");
-    if (data != null) {
-      let parseData = JSON.parse(data);
-      this.http.put(`${this.apiUrl}/users/:${parseData.userID}`, this.adminData).subscribe(
-        (response) => {
-          console.log(response);
-        }, error => {
-          console.error(error); // Manejo de errores
-        });
-    }
-    }
-    
+    this.http.put(`${this.apiUrl}/users/${this.adminData.userID}`, this.adminData).subscribe(
+      (response) => {
+        console.log(response);
+        alert("Sus cambios han sido aplicados.");
+      }
+    );
   }
 }
