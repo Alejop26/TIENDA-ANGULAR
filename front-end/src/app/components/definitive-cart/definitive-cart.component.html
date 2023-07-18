@@ -4,9 +4,31 @@
     </div>
 
     <div class="productsContainer">
-        <app-cart-product>
-            
-        </app-cart-product>
+
+        <div class="productContainer" *ngFor="let item of cart">
+            <div class="imageContainer">
+                <img src="item.productImages[0].imageURL" alt="Imagen del Producto">
+            </div>
+            <div class="productInfo">
+                <div>
+                    <h1>{{item.product.productName}}</h1>
+                </div>
+                <div class="prices">
+                    <h2>Unit. Price: {{item.product.price}}</h2>
+                    <h2>Total Price: {{item.product.price * item.quantity}}</h2>
+                </div>
+            </div>
+            <div class="order">
+                <button  class="decrease" ()> - </button>
+                <input type="text">
+                <button  class="increase"> + </button>
+            </div>
+        
+            <div class="delete">
+                <button >Eliminar</button>
+            </div>
+        </div>
+
     </div>
 
 
