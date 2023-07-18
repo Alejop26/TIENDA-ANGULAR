@@ -20,12 +20,21 @@
             </div>
             <div class="order">
                 <button  class="decrease" (click)="decreaseUnit(item)" > - </button>
-                <input type="text" value="{{item.quantity}}">
+                <h4>{{item.quantity}}</h4>
                 <button  class="increase" (click)="addUnit(item)" > + </button>
             </div>
         
             <div class="delete">
-                <button (click)="eliminateProduct(item)">Eliminar</button>
+                <button (click)="deleteProduct(item)">Eliminar</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="total">
+                <h2>Total: {{calculateTotal() | currency}}</h2>
+            </div>
+            <div class="payButton">
+                <button (click)="payment()">Pagar</button>
             </div>
         </div>
 

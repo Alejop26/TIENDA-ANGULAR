@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CartProductComponent } from '../cart-product/cart-product.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { InventoryService } from '../../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
+
 
 
 
@@ -17,8 +18,10 @@ export class DefinitiveCartComponent {
   userID: number;
   total: number = 0;
   url: string = "http://localhost:8080/api";
+  user: any;
+  paymentLink: string = "";
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient ) {
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private inventoryService: InventoryService, private router:Router, private http: HttpClient, private cdr: ChangeDetectorRef) {
     this.getCart();
   }
 
@@ -28,6 +31,7 @@ export class DefinitiveCartComponent {
       console.log(user);
       const userInfo = JSON.parse(user);
       if (userInfo && userInfo.userID) { // Verifica si userInfo y userInfo.userID existen
+        this.user = userInfo;
         this.userID = userInfo.userID;
         console.log("user id: " + this.userID);
       } 
@@ -82,21 +86,67 @@ export class DefinitiveCartComponent {
         // Realiza las acciones necesarias después de agregar el producto al carrito
       },
       (error) => {
-        alert(`Error al disminuir unidad de producto ${product.product.productName}`);
+        alert(`Error al disminuir unidad de producto ${product.product.productName} no se pueden crear menos de 1 unidad`);
         // Maneja el error de acuerdo a tus necesidades
       }
     );
 
   }
 
-  eliminateProduct(product: any){
+  deleteProduct(product: any){
     this.http.delete(this.url + '/cart/'+ product.cartID).subscribe(
       (response) => {
+        this.cdr.detectChanges();
         console.log(`Producto ${product.productID} eliminado`, response);
+        this.cart = this.cart.filter((item) => item.cartID !== product.cartID);
         // Realiza las acciones necesarias después de agregar el producto al carrito
       }
     );
+
+    // this.location.reload();
   }
+
+  calculateTotal(): number {
+    let total = 0;
+    this.cart.forEach(item => {
+      const price = Number(item.product.price);
+      const quantity = Number(item.quantity);
+      if (!isNaN(price) && !isNaN(quantity)) {
+        total += price * quantity;
+      }
+    });
+    this.total = total;
+    return total;
+  }
+
+payment(){
+  const data = {
+    userID: this.userID,
+    shippingAddress: this.user.address,
+  }
+
+  if (this.cart.length === 0 ){
+    return alert("No hay productos en el carrito");
+  }
+
+  this.http.post(this.url + '/orders', data).subscribe(
+    (response: any) => {
+      console.log(`Orden creada`, response);
+      this.paymentLink = response.url;
+      window.open(this.paymentLink, '_self');
+    },
+    (error: any) => {
+      alert(`Error al crear orden`);
+      console.log(error);
+    }
+
+  )
+}
 
 
 }
+
+
+
+
+
