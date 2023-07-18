@@ -28,7 +28,17 @@ export class AdminComponent implements OnInit {
   images: Image[] = [];
   apiUrl = "http://localhost:8080/api";
 
-  constructor(private http: HttpClient, private inventoryService: InventoryService) {}
+  showAdminPage:boolean = false;
+  showErrorPage:boolean = true;
+
+  
+  constructor(private http: HttpClient, private inventoryService: InventoryService) {
+    const adminMode = window.localStorage.getItem("adminMode");
+    if(adminMode == "true"){
+       this.showAdminPage = true;
+       this.showErrorPage = false;
+     }
+  }
 
   ngOnInit(): void {
     this.getProducts();

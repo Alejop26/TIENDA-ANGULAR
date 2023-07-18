@@ -12,7 +12,7 @@ import { CartService } from '../../services/cart.service';
 export class NavBarComponent implements OnInit {
 
   counter = 0;
-
+  
   constructor(private router: Router, private cartService: CartService) { 
     const adminModeStatus = window.localStorage.getItem("adminMode");
     const loggedInStatus = window.localStorage.getItem("loggedIn");
@@ -28,7 +28,13 @@ export class NavBarComponent implements OnInit {
 
   //rutas para navegar entre componentes
   loginRoute() {
-    this.router.navigate(['/login']);
+    const adminModeStatus = window.localStorage.getItem("adminMode");
+    if(adminModeStatus == "true"){
+      this.router.navigate(['/admin']);
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
   }
 
   cartRoute() {
