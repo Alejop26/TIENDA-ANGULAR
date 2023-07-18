@@ -47,11 +47,11 @@ export class NavBarComponent implements OnInit {
       setTimeout(() => {
         window.localStorage.setItem("userInformation", "");
         window.localStorage.setItem("loggedIn", "false");
-      }, 1000);
+      }, 1500);
       window.localStorage.setItem("adminMode", "false");
       const alert = document.querySelector(".logOutAlert") as HTMLElement;
       alert.style.display = "flex";
-
+      
       setTimeout(() => {
         alert.style.display = "none";
       }, 1500);
