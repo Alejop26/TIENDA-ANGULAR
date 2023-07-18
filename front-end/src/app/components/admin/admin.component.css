@@ -1,70 +1,118 @@
 .adminContainer {
-    padding: 20px; /* Añade un espacio de 20px alrededor del contenedor */
-  }
-  
-  h2 {
-    text-align: center; /* Centra el texto en el elemento h2 */
-  }
-  
-  .productList {
-    display: flex; /* Aplica una disposición flex al contenedor */
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
-    justify-content: center; /* Centra los elementos horizontalmente en el contenedor */
-  }
-  
-  .productCard {
-    width: 250px; /* Establece el ancho del elemento a 250px */
-    margin: 10px; /* Agrega un espacio de 10px entre los elementos */
-    padding: 10px; /* Añade un espacio interno de 10px alrededor del elemento */
-    border: 1px solid #ccc; /* Crea un borde de 1px sólido con color #ccc */
-    border-radius: 4px; /* Establece un radio de borde de 4px para redondear las esquinas */
-    display: flex; /* Aplica una disposición flex al elemento */
-    flex-direction: column; /* Establece la dirección de los elementos internos a columna */
-    align-items: center; /* Centra los elementos internos horizontalmente en el contenedor */
-  }
-  
-  .productImage img {
-    width: 100%; /* Establece el ancho de la imagen al 100% del contenedor */
-    max-height: 150px; /* Establece la altura máxima de la imagen en 150px */
-    object-fit: contain; /* Ajusta la imagen para que quepa dentro del contenedor manteniendo su relación de aspecto */
-  }
-  
-  .productDetails {
-    flex: 1; /* Permite que el elemento se expanda para llenar el espacio disponible */
-    display: flex; /* Aplica una disposición flex al elemento */
-    flex-direction: column; /* Establece la dirección de los elementos internos a columna */
-    justify-content: space-between; /* Distribuye el espacio disponible verticalmente entre los elementos internos */
-    align-items: center; /* Centra los elementos internos horizontalmente en el contenedor */
-    margin-top: 10px; /* Agrega un espacio superior de 10px al elemento */
-    text-align: center; /* Centra el texto en el elemento */
-  }
-  
-  .editControls {
-    display: flex; /* Aplica una disposición flex al elemento */
-    flex-direction: column; /* Establece la dirección de los elementos internos a columna */
-    align-items: center; /* Centra los elementos internos horizontalmente en el contenedor */
-    margin-bottom: 10px; /* Agrega un espacio inferior de 10px al elemento */
-  }
-  
-  .inputField {
-    width: 100%; /* Establece el ancho del campo de entrada al 100% del contenedor */
-  }
-  
-  .buttons {
-    display: flex; /* Aplica una disposición flex al elemento */
-    justify-content: space-between; /* Distribuye el espacio disponible horizontalmente entre los elementos internos */
-    width: 100%; /* Establece el ancho del elemento al 100% del contenedor */
-  }
-  
-  .addProduct {
-    margin-top: 20px; /* Agrega un espacio superior de 20px al elemento */
-    padding: 10px; /* Añade un espacio interno de 10px alrededor del elemento */
-    border: 1px solid #ccc; /* Crea un borde de 1px sólido con color #ccc */
-    border-radius: 4px; /* Establece un radio de borde de 4px para redondear las esquinas */
-  }
-  
-  .addProduct .buttons {
-    display: flex; /* Aplica una disposición flex al elemento */
-    justify-content: flex-end; /* Alinea los elementos internos a la derecha del contenedor */
-  }
-  
+  padding: 20px;
+  /* Añade un espacio de 20px alrededor del contenedor */
+}
+
+h2 {
+  text-align: center;
+  /* Centra el texto en el elemento h2 */
+}
+
+.productList {
+  display: flex;
+  /* Aplica una disposición flex al contenedor */
+  flex-wrap: wrap;
+  /* Permite que los elementos se envuelvan en múltiples líneas */
+  justify-content: center;
+  /* Centra los elementos horizontalmente en el contenedor */
+}
+
+.productCard {
+  width: 250px;
+  /* Establece el ancho del elemento a 250px */
+  margin: 10px;
+  /* Agrega un espacio de 10px entre los elementos */
+  padding: 10px;
+  /* Añade un espacio interno de 10px alrededor del elemento */
+  border: 1px solid #ccc;
+  /* Crea un borde de 1px sólido con color #ccc */
+  border-radius: 4px;
+  /* Establece un radio de borde de 4px para redondear las esquinas */
+  display: flex;
+  /* Aplica una disposición flex al elemento */
+  flex-direction: column;
+  /* Establece la dirección de los elementos internos a columna */
+  align-items: center;
+  /* Centra los elementos internos horizontalmente en el contenedor */
+}
+
+.productImage img {
+  width: 100%;
+  /* Establece el ancho de la imagen al 100% del contenedor */
+  max-height: 150px;
+  /* Establece la altura máxima de la imagen en 150px */
+  object-fit: contain;
+  /* Ajusta la imagen para que quepa dentro del contenedor manteniendo su relación de aspecto */
+}
+
+.productDetails {
+  flex: 1;
+  /* Permite que el elemento se expanda para llenar el espacio disponible */
+  display: flex;
+  /* Aplica una disposición flex al elemento */
+  flex-direction: column;
+  /* Establece la dirección de los elementos internos a columna */
+  justify-content: space-between;
+  /* Distribuye el espacio disponible verticalmente entre los elementos internos */
+  align-items: center;
+  /* Centra los elementos internos horizontalmente en el contenedor */
+  margin-top: 10px;
+  /* Agrega un espacio superior de 10px al elemento */
+  text-align: center;
+  /* Centra el texto en el elemento */
+}
+
+.editControls {
+  display: flex;
+  /* Aplica una disposición flex al elemento */
+  flex-direction: column;
+  /* Establece la dirección de los elementos internos a columna */
+  align-items: center;
+  /* Centra los elementos internos horizontalmente en el contenedor */
+  margin-bottom: 10px;
+  /* Agrega un espacio inferior de 10px al elemento */
+}
+
+.inputField {
+  width: 100%;
+  /* Establece el ancho del campo de entrada al 100% del contenedor */
+}
+
+.buttons {
+  display: flex;
+  /* Aplica una disposición flex al elemento */
+  justify-content: space-between;
+  /* Distribuye el espacio disponible horizontalmente entre los elementos internos */
+  width: 100%;
+  /* Establece el ancho del elemento al 100% del contenedor */
+}
+
+.addProduct {
+  margin-top: 20px;
+  /* Agrega un espacio superior de 20px al elemento */
+  padding: 10px;
+  /* Añade un espacio interno de 10px alrededor del elemento */
+  border: 1px solid #ccc;
+  /* Crea un borde de 1px sólido con color #ccc */
+  border-radius: 4px;
+  /* Establece un radio de borde de 4px para redondear las esquinas */
+}
+
+.addProduct .buttons {
+  display: flex;
+  /* Aplica una disposición flex al elemento */
+  justify-content: flex-end;
+  /* Alinea los elementos internos a la derecha del contenedor */
+}
+
+/* cambia los colores del boton save*/
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: black;
+  --mdc-protected-button-label-text-color: gold;
+}
+
+/* cambia los colores del boton delete*/
+.mat-mdc-raised-button.mat-warn {
+  --mdc-protected-button-container-color: black;
+  --mdc-protected-button-label-text-color: gold
+}

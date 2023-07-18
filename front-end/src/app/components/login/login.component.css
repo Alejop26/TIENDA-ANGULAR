@@ -27,8 +27,8 @@
   position: fixed;
   bottom: 0;
   padding: 5px;
-  background-color: #3F51B5;
-  color: white;
+  background-color: black;
+  color: gold;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,4 +37,9 @@
   min-width: 20%;
   height: 5%;
 
+}
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: black;
+  --mdc-protected-button-label-text-color: gold;
 }

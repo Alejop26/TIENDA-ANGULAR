@@ -1,6 +1,19 @@
+mat-toolbar.navBar {
+    position: sticky;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
 .navBar{
-  background-color: #000000;
+  background-color: #131313;
   color: gold;
+}
+
+
+.logo-img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    scale: 3;
 }
 
 .navBarCss {
@@ -31,6 +44,7 @@
 @media screen and (max-width: 600px) {
     .title {
         font-size: 20px;
+        white-space: normal;
     }
 }
 
@@ -39,8 +53,8 @@
     top: 100px;
     right: 0;
     padding: 5px;
-    background-color: #3F51B5;
-    color: white;
+    background-color: black;
+    color: gold;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,4 +62,5 @@
     transition: 2s;
     min-width: 20%;
     height: 5%;
+    z-index: 3;
   }

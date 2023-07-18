@@ -88,9 +88,19 @@ export class LoginComponent implements OnInit {
             setTimeout(() => {
               this.router.navigate(['/'])
             }, 1000);
-            //Si el usuario habia iniciado sesión, no le permitira iniciar sesión
-            //y mostrara un mensaje en pantalla.
-          } else {
+
+            const prb = window.localStorage.getItem("userInformation");
+            if(prb != null)
+            {
+              const parseData = JSON.parse(prb)
+              
+              if(parseData.role == "admin"){
+                window.localStorage.setItem("adminMode", "true");
+              }
+            }
+                        
+          } else {//Si el usuario habia iniciado sesión, no le permitira iniciar sesión
+                  //y mostrara un mensaje en pantalla.
             const alert = document.querySelector(".nullAlert") as HTMLElement;
             alert.style.display = "flex";
 
