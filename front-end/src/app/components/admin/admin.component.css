@@ -117,6 +117,8 @@ h2 {
   --mdc-protected-button-label-text-color: gold
 }
 
+
+/* Estiliza el contenedor de errores*/
 .errorContainer{
   width: 100vw;
   height: 55vh;
