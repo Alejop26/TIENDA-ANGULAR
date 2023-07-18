@@ -1,35 +1,96 @@
-.main-container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-    margin-left: 20%;
-    margin-right: 20%;
-    text-align: center;
-    background-color: #131313;
-    border-radius: 10px;
+.mainContainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 35vw;
+    margin-right: 20vw;
     padding: 20px;
-    color: white;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    justify-content: center;
-    height: 30vw;
+    max-width: 400px;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,9);
+    box-shadow: 0 0 5px #e3e3e3;
 }
 
-.btn-volver{
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    width: 50%;
+}
+
+h1 {
+    color:#e3e3e3;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+
+h2 {
+    color:#e3e3e3;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.btn-volver {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: gold;
-    color: black;
-    border: none;
-    border-radius: 5px;
+    border-radius: 20px;
+    border: 1px solid gold;
     padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    max-width: 150px;
-    margin: auto;
 }
 
-.main-container img{
-    max-width: 150px;
-    margin: auto;
+@media screen and (max-width: 695px) {
+    .mainContainer {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20vw;
+        margin-right: 20vw;
+        padding: 20px;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,9);
+        box-shadow: 0 0 5px #e3e3e3;
+    }
+    
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        width: 50%;
+    }
+    
+    h1 {
+        color:#e3e3e3;
+        font-size: 30px;
+        font-weight: 300;
+        text-align: center;
+    }
+    
+    h2 {
+        color:#e3e3e3;
+        font-size: 20px;
+        font-weight: 300;
+        text-align: center;
+    }
+    
+    .btn-volver {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: gold;
+        border-radius: 20px;
+        border: 1px solid gold;
+        padding: 10px;
+    }
 }
