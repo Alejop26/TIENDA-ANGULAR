@@ -36,6 +36,10 @@
   overflow: hidden;
 }
 
+.Home-card-image{
+  min-width: 50px;
+}
+
 .Home-card-image img {
   width: 100%;
   vertical-align: middle;
@@ -60,7 +64,8 @@
 
 @media (max-width: 600px) {
   .Home-product-card {
-    flex-direction: column
+    flex-direction: column;
+    width: 90vw;
   }
 
   .Home-card-image {

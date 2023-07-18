@@ -25,21 +25,29 @@
 
 .statusAlert1, .incorrectPasswordAlert, .statusAlert2, .nullAlert{
   position: fixed;
-  bottom: 0;
-  padding: 5px;
-  background-color: black;
-  color: gold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-  transition: 2s;
-  min-width: 20%;
-  height: 5%;
+    top: 100px;
+    right: 0;
+    padding: 5px;
+    background-color: black;
+    color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: 2s;
+    min-width: 20%;
+    height: 5%;
+    z-index: 3;
+}
 
+@media screen and (max-width: 353px){
+  .statusAlert1, .incorrectPasswordAlert, .statusAlert2, .nullAlert{
+      top: 30vh;
+  }
 }
 
 .mat-mdc-raised-button.mat-primary {
   --mdc-protected-button-container-color: black;
   --mdc-protected-button-label-text-color: gold;
 }
+

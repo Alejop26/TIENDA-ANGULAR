@@ -29,7 +29,7 @@
     </div>
   </mat-expansion-panel> -->
 
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel *ngIf="showAdminPage" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Edit admin profile
@@ -115,6 +115,4 @@
   <div class="errorContainer" *ngIf="showErrorPage">
   <h1>Error, pagina no encontrada :c</h1>
 </div> 
-
-
 
